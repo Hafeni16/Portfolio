@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hafeni Nghidinwa Portfolio</title>
+<meta name="description" content="IT Project Manager in Switzerland – data platforms, migrations, rulesets and business applications.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800;900&family=Instrument+Sans:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Layout idea: one big number per project, one picture, three short lines. Detail and demos sit behind "Try it". Each project owns a colour. */
+  --paper:#F4F6F8;
+  --surface:#FFFFFF;
+  --ink:#13233A;
+  --muted:#5E6878;
+  --line:#DCE2E8;
+  /* Three colours only: navy ink, one teal accent, warm off-white paper. */
+  --acc:#0B8A84; --tint:#E1F0EE;
+  --c1:var(--acc); --c2:var(--acc); --c3:var(--acc); --c4:var(--acc);
+  --t1:var(--tint); --t2:var(--tint); --t3:var(--tint); --t4:var(--tint);
+  --ok:#0B8A84; --warn:#B7791F; --bad:#C2352B;
+  --font-display:"Schibsted Grotesk", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --font-body:"Instrument Sans", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --font-mono:"Fragment Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#11151C; --surface:#1A2029; --ink:#EEF1F5; --muted:#A3ACB9; --line:#2A323E;
+    --acc:#3CCFC4; --tint:#13282B;
+    --c1:var(--acc); --c2:var(--acc); --c3:var(--acc); --c4:var(--acc);
+    --t1:var(--tint); --t2:var(--tint); --t3:var(--tint); --t4:var(--tint);
+    --ok:#3FCB9F; --warn:#E3B04B; --bad:#FF7A6E; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#11151C; --surface:#1A2029; --ink:#EEF1F5; --muted:#A3ACB9; --line:#2A323E;
+  --acc:#3CCFC4; --tint:#13282B;
+  --c1:var(--acc); --c2:var(--acc); --c3:var(--acc); --c4:var(--acc);
+  --t1:var(--tint); --t2:var(--tint); --t3:var(--tint); --t4:var(--tint);
+  --ok:#3FCB9F; --warn:#E3B04B; --bad:#FF7A6E; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.55 var(--font-body)}
+html[data-lang="en"] [data-l="de"], html[data-lang="de"] [data-l="en"]{display:none !important}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--c3);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--font-display);text-wrap:balance;margin:0;letter-spacing:-0.015em}
+.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+button{font:inherit;color:inherit}
+input[type=range]{width:100%}
+svg{display:block}
+
+/* bar */
+.bar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(8px)}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:14px;padding-bottom:14px}
+.logo{font-family:var(--font-display);font-weight:800;font-size:18px;text-decoration:none}
+.logo span{color:var(--acc)}
+.bar nav{display:flex;gap:6px;align-items:center}
+.dot-nav{display:flex;gap:6px}
+.dot-nav a{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font:600 12px var(--font-mono);text-decoration:none;color:var(--paper)}
+.dot-nav a:hover{background:var(--acc)!important}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:2px;background:var(--surface);margin-left:8px}
+.lang button{border:0;background:transparent;color:var(--muted);font:500 12px var(--font-mono);padding:6px 10px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+
+/* hero */
+.hero{padding:48px 0 40px;display:grid;grid-template-columns:1fr 200px;gap:40px;align-items:center}
+.hello{font:500 14px var(--font-mono);color:var(--muted);margin:0 0 10px}
+.hero h1{font-size:clamp(40px,6.4vw,76px);font-weight:800;line-height:1}
+.hero h1 em{font-style:normal;color:var(--c1)}
+.hero p.sub{font-size:clamp(18px,2vw,21px);color:var(--muted);margin:18px 0 0;max-width:40ch}
+.hero .photo{position:relative}
+.hero img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:50%;border:6px solid var(--surface);box-shadow:0 10px 30px rgba(22,32,46,.12)}
+.avail{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);white-space:nowrap;background:var(--surface);border-radius:999px;padding:6px 12px;font:500 12px var(--font-mono);box-shadow:0 4px 14px rgba(22,32,46,.12);display:flex;gap:6px;align-items:center}
+.avail i{width:8px;height:8px;border-radius:50%;background:var(--ok)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.btn{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;flex:0 0 auto;padding:12px 20px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;border:1.5px solid var(--ink);background:transparent;cursor:pointer}
+.btn.primary{background:var(--ink);color:var(--paper)}
+@media (prefers-reduced-motion:no-preference){.btn{transition:transform .15s}.btn:hover{transform:translateY(-2px)}}
+
+/* big stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:56px}
+.stat{border-radius:18px;padding:22px 20px;text-decoration:none;display:block}
+.stat .n{font-family:var(--font-display);font-weight:800;font-size:clamp(34px,4.6vw,52px);line-height:1;font-variant-numeric:tabular-nums}
+.stat .l{font-size:14.5px;margin-top:8px;color:var(--ink);opacity:.8}
+.s1{background:var(--t1)} .s1 .n{color:var(--c1)}
+.s2{background:var(--t2)} .s2 .n{color:var(--c2)}
+.s3{background:var(--t3)} .s3 .n{color:var(--c3)}
+.s4{background:var(--t4)} .s4 .n{color:var(--c4)}
+@media (prefers-reduced-motion:no-preference){.stat{transition:transform .2s}.stat:hover{transform:translateY(-3px)}}
+
+/* project block */
+.proj{border-radius:28px;padding:44px;margin-bottom:28px;scroll-margin-top:80px}
+.p1{background:var(--t1);--c:var(--c1)} .p2{background:var(--t2);--c:var(--c2)} .p3{background:var(--t3);--c:var(--c3)} .p4{background:var(--t4);--c:var(--c4)}
+.ptop{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border-radius:999px;padding:6px 12px;font:500 12.5px var(--font-mono)}
+.pill b{color:var(--c);font-weight:600}
+.proj h2{font-size:clamp(28px,4vw,46px);font-weight:800;line-height:1.05;max-width:20ch}
+.proj h2 span.hl{color:var(--c)}
+.pgrid{display:grid;grid-template-columns:1fr 1.15fr;gap:36px;margin-top:28px;align-items:start}
+.story{display:grid;gap:14px}
+.beat{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
+.beat .ic{width:44px;height:44px;border-radius:12px;background:var(--surface);display:grid;place-items:center;color:var(--c)}
+.beat h3{font-size:13px;font-family:var(--font-mono);font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--c);margin:2px 0 2px}
+.beat p{margin:0;font-size:16px}
+.card{background:var(--surface);border-radius:20px;padding:24px;box-shadow:0 1px 0 rgba(22,32,46,.04)}
+.card h4{font-family:var(--font-display);font-size:17px;margin:0 0 14px}
+.tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.tools span{font:500 12px var(--font-mono);background:var(--surface);padding:4px 9px;border-radius:999px}
+
+/* before/after */
+.seg{display:inline-flex;background:var(--paper);border-radius:999px;padding:3px;margin-bottom:18px}
+.seg button{border:0;background:transparent;padding:7px 16px;border-radius:999px;font-size:14px;font-weight:600;cursor:pointer;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--c);color:#fff}
+.ba{display:grid;gap:18px}
+.ba .row{display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:center}
+.ba .lab{font-size:14px;color:var(--muted)}
+.ba .big{font-family:var(--font-display);font-weight:800;font-size:28px;line-height:1;font-variant-numeric:tabular-nums}
+.track{height:12px;border-radius:999px;background:var(--paper);overflow:hidden;margin-top:6px}
+.fill{height:100%;border-radius:999px;background:var(--muted);width:0}
+.fill.on{background:var(--c)}
+@media (prefers-reduced-motion:no-preference){.fill{transition:width .8s cubic-bezier(.2,.8,.2,1),background .3s}}
+
+/* pipeline */
+.pipe{display:flex;align-items:center;gap:0;margin-top:20px;overflow-x:auto;padding-bottom:4px}
+.pipe .st{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:84px;text-align:center;font-size:12.5px}
+.pipe .st .ic{width:46px;height:46px;border-radius:50%;background:var(--surface);display:grid;place-items:center;color:var(--c);border:2px solid var(--c)}
+.pipe .ln{flex:1;min-width:14px;height:2px;background:var(--c);opacity:.4;margin-top:-22px}
+
+/* timeline */
+.tline{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-top:6px}
+.tline div{text-align:center;font-size:12.5px;position:relative;padding-top:22px}
+.tline div::before{content:"";position:absolute;top:6px;left:50%;width:12px;height:12px;border-radius:50%;background:var(--c);transform:translateX(-50%)}
+.tline div::after{content:"";position:absolute;top:11px;left:50%;width:100%;height:2px;background:var(--c);opacity:.35}
+.tline div:last-child::after{display:none}
+.tline b{display:block;font-size:13px}
+.tline .gate::before{background:var(--ink);width:16px;height:16px;top:4px}
+
+/* details / try it */
+details.try{margin-top:22px;background:var(--surface);border-radius:20px;overflow:hidden}
+details.try summary{list-style:none;cursor:pointer;padding:16px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-weight:600}
+details.try summary::-webkit-details-marker{display:none}
+details.try summary .go{font:500 12.5px var(--font-mono);background:var(--c);color:#fff;border-radius:999px;padding:6px 12px;white-space:nowrap}
+details.try[open] summary .go::after{content:" ×"}
+details.try .in{padding:0 22px 22px}
+.made{font:500 11px var(--font-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.field{display:grid;gap:4px;margin-bottom:10px}
+.field label{font-size:13px;font-weight:600}
+.field input,.field select{font:500 15px var(--font-mono);padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);width:100%}
+.row3{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:10px;margin-top:10px}
+.result{border-radius:12px;padding:12px 14px;margin-top:6px;font-size:15px;background:var(--paper)}
+.result strong{display:block}
+.result.ok{background:color-mix(in srgb,var(--ok) 14%,var(--surface))}
+.result.warn{background:color-mix(in srgb,var(--warn) 16%,var(--surface))}
+.result.bad{background:color-mix(in srgb,var(--bad) 13%,var(--surface))}
+
+/* big zero */
+.zero{display:flex;align-items:center;gap:20px}
+.zero .n{font-family:var(--font-display);font-weight:800;font-size:clamp(90px,12vw,150px);line-height:.85;color:var(--c)}
+.zero p{margin:0;font-size:16px}
+.mini-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}
+.mini-stats div{background:var(--paper);border-radius:14px;padding:12px}
+.mini-stats b{display:block;font-family:var(--font-display);font-size:24px;font-variant-numeric:tabular-nums}
+.mini-stats span{font-size:12.5px;color:var(--muted)}
+
+/* secrecy */
+.cos{display:grid;gap:8px;margin-top:10px}
+.co{display:grid;grid-template-columns:28px 1fr 52px;gap:10px;align-items:center;font-size:13px}
+.co .av{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font:600 12px var(--font-mono);color:#fff;background:var(--c)}
+.co .pct{font-family:var(--font-mono);text-align:right}
+.cellbox{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;padding:16px 18px;border-radius:14px;background:var(--ink);color:var(--paper)}
+.cellbox .v{font-family:var(--font-display);font-weight:800;font-size:34px}
+.cellbox .why{font-size:13px;opacity:.75;max-width:30ch}
+
+/* fund mock */
+.fundcards{display:grid;gap:10px}
+.fc{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;background:var(--paper);border-radius:14px;padding:12px 14px}
+.fc b{font-family:var(--font-display);font-size:16px}
+.fc small{display:block;color:var(--muted);font-size:12.5px}
+.fc .bars{display:flex;gap:4px;align-items:flex-end;height:30px}
+.fc .bars i{width:8px;border-radius:3px;background:var(--c);opacity:.35;display:block}
+.fc .bars i:last-child{opacity:1}
+.cmpbtn{border:0;background:var(--surface);border-radius:999px;padding:5px 11px;font-size:12.5px;font-weight:600;cursor:pointer}
+.cmpbtn[aria-pressed="true"]{background:var(--c);color:#fff}
+.filters{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.compare{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.compare .c{background:var(--paper);border-radius:14px;padding:12px;font-size:13px}
+.compare .c b{display:block;font-family:var(--font-display);font-size:15px;margin-bottom:6px}
+.compare .k{display:flex;justify-content:space-between;padding:2px 0}
+.compare .k span:last-child{font-family:var(--font-mono)}
+.feat-icons{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
+.feat-icons div{background:var(--surface);border-radius:14px;padding:12px;text-align:center;font-size:13px}
+.feat-icons .ic{width:36px;height:36px;margin:0 auto 6px;color:var(--c);display:grid;place-items:center}
+
+/* forms */
+.langs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.langs button{border:0;background:var(--paper);border-radius:12px;padding:10px 16px;font:600 15px var(--font-mono);cursor:pointer}
+.langs button[aria-pressed="true"]{background:var(--c);color:#fff}
+.paper{background:var(--paper);border-radius:14px;padding:18px}
+.paper .ttl{font-family:var(--font-display);font-weight:700;font-size:18px;margin-bottom:12px}
+.paper .fl{font-size:12px;color:var(--muted)}
+.paper .fv{border-bottom:1.5px solid var(--ink);padding:3px 0 6px;margin-bottom:12px;font-size:15px}
+.checks{display:grid;grid-template-columns:52px repeat(4,1fr);gap:6px;font-size:12.5px;margin-top:18px;align-items:center}
+.checks .h{color:var(--muted);text-align:center}
+.checks .r{font:600 13px var(--font-mono)}
+.checks .ck{height:30px;border-radius:8px;background:color-mix(in srgb,var(--c) 18%,var(--surface));display:grid;place-items:center;color:var(--c);font-weight:700}
+
+/* team */
+.team{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:center}
+.people{display:grid;grid-template-columns:repeat(19,1fr);gap:6px}
+.people i{aspect-ratio:1;border-radius:50%;display:block;background:var(--acc);opacity:.85}
+.people i.ch{background:var(--ink);opacity:1}
+.legend{display:flex;gap:18px;margin-top:12px;font-size:14px;flex-wrap:wrap}
+.legend span{display:flex;gap:8px;align-items:center}
+.legend i{width:12px;height:12px;border-radius:50%;display:inline-block}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:36px}
+.steps div{background:var(--surface);border-radius:18px;padding:18px 14px;text-align:center}
+.steps .ic{width:44px;height:44px;margin:0 auto 8px;border-radius:12px;display:grid;place-items:center;background:var(--paper)}
+.steps b{display:block;font-family:var(--font-display);font-size:16px}
+.steps span{font-size:13px;color:var(--muted)}
+.sec{padding:56px 0 24px;scroll-margin-top:80px}
+.sec h2{font-size:clamp(28px,4vw,42px);font-weight:800;margin-bottom:24px}
+
+/* skills */
+.skillmap{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.skillmap button{border:0;background:var(--surface);border-radius:999px;padding:8px 14px;font-size:14px;cursor:pointer}
+.skillmap button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.used{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.used div{border-radius:16px;padding:14px 16px;font-size:14px;opacity:.3;font-weight:600}
+.used div.on{opacity:1}
+.used .u1{background:var(--t1)} .used .u2{background:var(--t2)} .used .u3{background:var(--t3)} .used .u4{background:var(--t4)}
+@media (prefers-reduced-motion:no-preference){.used div{transition:opacity .25s}}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.facts div{background:var(--surface);border-radius:18px;padding:18px}
+.facts h3{font-size:13px;font-family:var(--font-mono);font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:8px}
+.facts p{margin:0 0 4px;font-size:15px}
+
+/* experience */
+.xp{display:grid;gap:10px}
+.xp div{display:grid;grid-template-columns:160px 1fr;gap:16px;background:var(--surface);border-radius:16px;padding:16px 20px}
+.xp .y{font:500 13px var(--font-mono);color:var(--muted);padding-top:2px}
+.xp b{font-family:var(--font-display);font-size:17px}
+.xp span.s{display:block;font-size:14px;color:var(--muted)}
+
+/* cv + contact */
+.dl{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.dl div{background:var(--surface);border-radius:18px;padding:18px}
+.dl b{display:block;font-family:var(--font-display);font-size:16px;margin-bottom:10px}
+.dl a{display:inline-block;font:500 13px var(--font-mono);padding:7px 12px;border-radius:999px;background:var(--paper);text-decoration:none;margin:0 6px 6px 0}
+.dl a:hover{background:var(--ink);color:var(--paper)}
+.note{font-size:13.5px;color:var(--muted);margin:12px 0 0}
+.contact{margin-top:56px;border-radius:28px;padding:44px;background:var(--ink);color:var(--paper);display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center}
+.contact h2{font-size:clamp(30px,4vw,46px);font-weight:800;margin:0}
+.contact p{opacity:.75;margin:10px 0 0;max-width:46ch}
+.contact .lines{display:grid;gap:12px;font:500 16px var(--font-mono)}
+.contact .lines a{text-decoration:none;border-bottom:2px solid var(--acc)}
+.copy{border:1px solid rgba(255,255,255,.3);background:transparent;color:inherit;font:500 12px var(--font-mono);padding:4px 9px;border-radius:999px;cursor:pointer;margin-left:8px}
+footer{padding:28px 0 48px;color:var(--muted);font:400 13px var(--font-mono)}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;gap:20px}
+  .hero .photo{max-width:150px;order:-1}
+  .stats{grid-template-columns:1fr 1fr}
+  .proj{padding:28px 22px;border-radius:22px}
+  .pgrid,.team,.contact{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .used,.dl,.feat-icons{grid-template-columns:1fr 1fr}
+  .facts{grid-template-columns:1fr}
+  .dot-nav{display:none}
+  .xp div{grid-template-columns:1fr;gap:4px}
+}
+@media (max-width:520px){
+  .wrap{padding:0 16px}
+  .stats{grid-template-columns:1fr}
+  .row3,.filters,.compare,.mini-stats{grid-template-columns:1fr}
+  .tline{grid-template-columns:1fr;gap:10px}
+  .tline div{text-align:left;padding:0 0 0 24px}
+  .tline div::before{left:6px;top:4px}
+  .tline div::after{display:none}
+  .people{grid-template-columns:repeat(13,1fr)}
+  .contact{padding:28px 22px}
+}
+
+/* ===== IT layer ===== */
+body{background-image:radial-gradient(color-mix(in srgb,var(--ink) 9%,transparent) 1px,transparent 1px);background-size:22px 22px}
+.term{background:#0D1320;color:#C9D4E3;border-radius:18px;font:400 14px/1.7 var(--font-mono);overflow:hidden;margin:-8px 0 28px;box-shadow:0 12px 30px rgba(13,19,32,.18)}
+.term .tb{display:flex;align-items:center;gap:7px;padding:10px 14px;background:#161E2E;font-size:12px;color:#7D8BA1}
+.term .tb i{width:11px;height:11px;border-radius:50%;display:inline-block}
+.term .tb i:nth-child(1){background:#FF5F57}.term .tb i:nth-child(2){background:#FEBC2E}.term .tb i:nth-child(3){background:#28C840}
+.term .tb span{margin-left:8px}
+.term pre{margin:0;padding:16px 20px;white-space:pre-wrap;word-break:break-word}
+.term .p{color:#3CCFC4}.term .k{color:#8FA3BC}.term .s{color:#FFFFFF}.term .c{color:#5E6B80}
+.cursor{display:inline-block;width:8px;height:15px;background:#C9D4E3;vertical-align:-2px}
+@media (prefers-reduced-motion:no-preference){.cursor{animation:blink 1s steps(1) infinite}@keyframes blink{50%{opacity:0}}}
+.chrome{display:flex;align-items:center;gap:6px;margin:-8px -8px 16px;padding:0 0 12px;border-bottom:1px solid var(--line);font:500 12px var(--font-mono);color:var(--muted)}
+.chrome i{width:9px;height:9px;border-radius:50%;background:var(--line);display:inline-block}
+.chrome span{margin-left:6px}
+.chrome em{margin-left:auto;font-style:normal;color:var(--c);display:flex;align-items:center;gap:6px}
+.chrome em::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.tools span::before{content:"#";opacity:.45;margin-right:1px}
+.pill b::before{content:"// ";opacity:.6}
+.beat h3::before{content:"> ";opacity:.6}
+
+/* deck */
+details.deckwrap{margin-top:22px;background:#0D1320;color:#E6ECF3;border-radius:20px;overflow:hidden}
+details.deckwrap summary{list-style:none;cursor:pointer;padding:16px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-weight:600}
+details.deckwrap summary::-webkit-details-marker{display:none}
+details.deckwrap summary .go{font:500 12.5px var(--font-mono);background:var(--c);color:#fff;border-radius:999px;padding:6px 12px;white-space:nowrap}
+details.deckwrap summary small{font:400 12.5px var(--font-mono);color:#7D8BA1;margin-left:8px}
+.deck{padding:0 22px 20px}
+.slides{position:relative;border-radius:14px;background:#121A2A;border:1px solid #233049;aspect-ratio:16/8.4;overflow:hidden}
+.slide{position:absolute;inset:0;padding:30px 34px;display:none;flex-direction:column;gap:14px}
+.slide.on{display:flex}
+@media (prefers-reduced-motion:no-preference){.slide.on{animation:sl .35s ease}@keyframes sl{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}}
+.slide .sn{font:500 12px var(--font-mono);color:var(--c)}
+.slide h4{font-family:var(--font-display);font-size:clamp(20px,2.6vw,28px);margin:0;line-height:1.15;color:#F3F6FA}
+.slide p{margin:0;color:#AEB9C9;font-size:15.5px;max-width:60ch}
+.slide .body{flex:1;display:flex;align-items:center;min-height:0}
+.dnav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px}
+.dnav button{border:1px solid #2E3B55;background:#121A2A;color:#E6ECF3;border-radius:999px;width:38px;height:38px;cursor:pointer;font-size:16px}
+.dnav button:disabled{opacity:.35;cursor:default}
+.dots{display:flex;gap:6px}
+.dots button{width:9px;height:9px;padding:0;border-radius:50%;border:0;background:#2E3B55;cursor:pointer}
+.dots button[aria-current="true"]{background:var(--c);width:24px;border-radius:999px}
+.dnav .ct{font:500 12px var(--font-mono);color:#7D8BA1;min-width:42px;text-align:right}
+/* slide visuals */
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%}
+.kpis div{background:#0D1320;border:1px solid #233049;border-radius:12px;padding:14px}
+.kpis b{display:block;font-family:var(--font-display);font-size:clamp(24px,3vw,34px);color:#fff;font-variant-numeric:tabular-nums}
+.kpis span{font-size:13px;color:#8A97AB}
+.arch{display:flex;align-items:center;gap:6px;flex-wrap:wrap;width:100%}
+.arch .n{background:#0D1320;border:1px solid #2E3B55;border-radius:10px;padding:9px 11px;font:500 12.5px var(--font-mono);color:#DCE4EF;text-align:center}
+.arch .n small{display:block;color:#7D8BA1;font-size:11px}
+.arch .n.hl{border-color:var(--c);box-shadow:0 0 0 1px var(--c) inset}
+.arch .a{color:var(--c);font:500 14px var(--font-mono)}
+.code{background:#0A0F1A;border:1px solid #233049;border-radius:12px;padding:14px 16px;font:400 13px/1.6 var(--font-mono);color:#C9D4E3;white-space:pre;overflow:auto;width:100%;max-height:100%;margin:0}
+.code .k{color:#8FA3BC}.code .s{color:#FFFFFF}.code .n{color:#3CCFC4}.code .c{color:#5E6B80}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:18px;width:100%;align-items:center}
+.ladder{display:grid;gap:8px;width:100%}
+.ladder div{display:flex;gap:12px;align-items:center;background:#0D1320;border:1px solid #233049;border-radius:10px;padding:10px 12px;font-size:14px;color:#DCE4EF}
+.ladder b{font:500 12px var(--font-mono);color:var(--c);min-width:62px}
+.inherit{display:flex;gap:8px;align-items:center;font:500 13px var(--font-mono);flex-wrap:wrap}
+.inherit span{background:#0D1320;border:1px solid #2E3B55;border-radius:8px;padding:8px 10px}
+.inherit span.hl{border-color:var(--c);color:#fff}
+.slide ul.l{margin:0;padding-left:18px;color:#C9D4E3;font-size:15px;display:grid;gap:6px}
+.slide .tag{font:500 11px var(--font-mono);color:#7D8BA1;text-transform:uppercase;letter-spacing:.06em}
+@media (max-width:760px){
+  .slides{aspect-ratio:auto;min-height:440px}
+  .slide{padding:20px}
+  .kpis,.split{grid-template-columns:1fr}
+}
+.pgrid>*,.split>*,.slide .body>*{min-width:0}
+.pgrid{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}
+@media (max-width:900px){.pgrid{grid-template-columns:minmax(0,1fr)}}
+
+/* ===== Layout pass: 8-pt spacing, aligned columns, no inner scrollbars ===== */
+:root{--s1:8px;--s2:16px;--s3:24px;--s4:32px;--s5:48px;--s6:72px;--s7:104px}
+.hero{padding:var(--s6) 0 var(--s5);align-items:center}
+.hero .photo{align-self:center}
+.btns{margin-top:var(--s4)}
+.term{margin:0 0 var(--s3)}
+.stats{gap:var(--s2);margin-bottom:var(--s7)}
+.stat{padding:var(--s3)}
+.proj{padding:var(--s5);margin-bottom:var(--s5);border-radius:28px}
+.ptop{margin-bottom:var(--s3)}
+.pgrid{gap:var(--s5);margin-top:var(--s5);align-items:stretch}
+/* left column spreads to the card's height, so both columns start and end together */
+.story{display:flex;flex-direction:column;justify-content:space-between;gap:var(--s3);padding:var(--s1) 0}
+.beat{gap:var(--s2)}
+.beat p{line-height:1.5}
+.tools{margin-top:0}
+/* right card: header, content, flow pinned to the bottom */
+.card{display:flex;flex-direction:column;padding:var(--s4)}
+.chrome{margin:calc(var(--s1) * -1) 0 var(--s3);padding-bottom:var(--s2)}
+.ba{gap:var(--s3)}
+.ba .row{grid-template-columns:132px 1fr}
+/* flow: five equal columns on one connecting line, never scrolls */
+.pipe{display:grid;grid-template-columns:repeat(4,1fr);position:relative;overflow:visible;margin-top:auto;padding-top:var(--s4);gap:0}
+.pipe:has(.st:nth-child(9)){grid-template-columns:repeat(5,1fr)}
+.pipe .ln{display:none}
+.pipe::before{content:"";position:absolute;left:10%;right:10%;top:calc(var(--s4) + 22px);height:2px;background:var(--c);opacity:.28}
+.pipe .st{min-width:0;position:relative;z-index:1;padding:0 2px}
+.pipe .st .ic{background:var(--surface)}
+.pipe .st span{line-height:1.3}
+.zero{margin-bottom:var(--s1)}
+.mini-stats{gap:var(--s2);margin-top:var(--s3)}
+.feat-icons{gap:var(--s2)}
+.fundcards{gap:var(--s2)}
+.checks{margin-top:var(--s3)}
+/* deck + try panels share the same inner edge (32px) and rhythm */
+details.deckwrap,details.try{margin-top:var(--s3);border-radius:20px}
+details.deckwrap summary,details.try summary{padding:var(--s3) var(--s4)}
+.deck{padding:0 var(--s4) var(--s4)}
+details.try .in{padding:0 var(--s4) var(--s4)}
+/* slides stack in one grid cell: the panel is as tall as the tallest slide, no empty band */
+.slides{display:grid;aspect-ratio:auto;min-height:0}
+.slide{position:relative;inset:auto;grid-area:1/1;display:flex;visibility:hidden;padding:var(--s5);gap:var(--s2)}
+.slide.on{visibility:visible}
+.slide .body{flex:none;margin-top:var(--s2);display:block}
+.slide p{max-width:62ch}
+.kpis{gap:var(--s2)}
+.kpis div{padding:var(--s3)}
+.dnav{margin-top:var(--s3)}
+/* sections below the projects */
+.sec{padding:var(--s7) 0 0}
+.sec h2{margin-bottom:var(--s4)}
+.team{gap:var(--s5)}
+.steps{gap:var(--s2);margin-top:var(--s5)}
+.steps div{padding:var(--s3) var(--s2)}
+.used{gap:var(--s2)}
+.facts{gap:var(--s2);margin-top:var(--s4)}
+.facts div{padding:var(--s3)}
+.xp{gap:var(--s1)}
+.xp div{padding:var(--s3) var(--s4);align-items:baseline}
+.dl{gap:var(--s2)}
+.dl div{padding:var(--s3)}
+.contact{margin-top:var(--s7);padding:var(--s5)}
+footer{padding:var(--s4) 0 var(--s5)}
+@media (max-width:900px){
+  .hero{padding:var(--s5) 0 var(--s4)}
+  .stats{margin-bottom:var(--s6)}
+  .proj{padding:var(--s4) var(--s3)}
+  .pgrid{gap:var(--s4);margin-top:var(--s4)}
+  .card{padding:var(--s3)}
+  .slide{padding:var(--s3)}
+  details.deckwrap summary,details.try summary{padding:var(--s2) var(--s3)}
+  .deck,details.try .in{padding:0 var(--s3) var(--s3)}
+  .sec{padding-top:var(--s6)}
+  .contact{margin-top:var(--s6);padding:var(--s4) var(--s3)}
+}
+@media (max-width:520px){
+  .ba .row{grid-template-columns:96px 1fr}
+  .ba .big{font-size:24px}
+  .pipe .st{font-size:11px}
+  .pipe .st .ic{width:38px;height:38px}
+  .pipe::before{top:calc(var(--s4) + 19px)}
+}
+
+.pipe{align-items:start}
+.card .seg{align-self:flex-start}
+.slides{grid-template-columns:minmax(0,1fr)}
+.slide{justify-content:center;min-width:0}
+.slide h4,.slide p{overflow-wrap:anywhere}
+.pill b{white-space:nowrap}
+.chrome span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.chrome em{white-space:nowrap;flex:none}
+details.deckwrap summary>span:first-child{min-width:0}
+@media (max-width:520px){.chrome i{display:none}.chrome span{margin-left:0}}
+
+/* ===== Less navy: dark only for the terminal and small buttons ===== */
+details.deckwrap{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+details.deckwrap summary small{color:var(--muted)}
+.slides{background:var(--paper);border:1px solid var(--line)}
+.slide .sn{color:var(--acc)}
+.slide h4{color:var(--ink)}
+.slide p{color:var(--muted)}
+.kpis div,.arch .n,.ladder div,.inherit span{background:var(--surface);border-color:var(--line);color:var(--ink)}
+.kpis b{color:var(--acc)}
+.kpis span,.arch .n small{color:var(--muted)}
+.arch .n.hl,.inherit span.hl{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc) inset;color:var(--ink)}
+.ladder b{color:var(--acc)}
+.slide ul.l{color:var(--ink)}
+.code{background:var(--surface);border-color:var(--line);color:var(--ink)}
+.code .k{color:var(--muted)}.code .s{color:var(--ink);font-weight:500}.code .n{color:var(--acc)}.code .c{color:#8C97A6}
+.dnav button{background:var(--surface);border-color:var(--line);color:var(--ink)}
+.dots button{background:var(--line)}
+.dnav .ct{color:var(--muted)}
+.cellbox{background:var(--tint);color:var(--ink)}
+.cellbox .v{color:var(--acc)}
+.contact{background:var(--tint);color:var(--ink)}
+.contact p{color:var(--muted);opacity:1}
+.copy{border-color:var(--line);color:var(--ink);background:var(--surface)}
+.dot-nav a{background:transparent!important;color:var(--acc);border:1.5px solid var(--acc)}
+.dot-nav a:hover{background:var(--acc)!important;color:#fff}
+.lang button[aria-pressed="true"],.skillmap button[aria-pressed="true"]{background:var(--acc);color:#fff}
+.btn.primary{background:var(--acc);border-color:var(--acc);color:#fff}
+.btn{border-color:var(--acc);color:var(--acc)}
+.term{background:#1B2838;box-shadow:0 8px 22px rgba(19,35,58,.10)}
+.term .tb{background:#223246}
+.people i.ch{background:#7FA3B8}
+
+/* who-decided-what + problem/fix slides */
+.who{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s2);width:100%}
+.who>div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:var(--s2) var(--s3)}
+.who>div.me{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc) inset}
+.who .tag{display:block;font:500 11px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:8px}
+.who .me .tag{color:var(--acc)}
+.who ul{margin:0;padding-left:16px;display:grid;gap:6px;font-size:14px;color:var(--ink)}
+.fixes{display:grid;gap:var(--s1);width:100%}
+.fixes>div{display:grid;grid-template-columns:1fr 24px 1.4fr;gap:var(--s2);align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px var(--s2)}
+.fixes .pb{font-size:14px;color:var(--muted)}
+.fixes .pb b{display:block;color:var(--ink);font-size:14.5px}
+.fixes .ar{color:var(--acc);font:600 16px var(--font-mono);text-align:center}
+.fixes .fx{font-size:14px;color:var(--ink)}
+.users{background:var(--surface)}
+@media (max-width:760px){.who{grid-template-columns:1fr}.fixes>div{grid-template-columns:1fr}.fixes .ar{display:none}}
+
+/* dark mode: dark text on the bright teal accent for contrast */
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn.primary,:root:not([data-theme="light"]) .lang button[aria-pressed="true"],:root:not([data-theme="light"]) .skillmap button[aria-pressed="true"],:root:not([data-theme="light"]) .seg button[aria-pressed="true"],:root:not([data-theme="light"]) .langs button[aria-pressed="true"],:root:not([data-theme="light"]) .cmpbtn[aria-pressed="true"],:root:not([data-theme="light"]) .go{color:#0D1320!important}}
+:root[data-theme="dark"] .btn.primary,:root[data-theme="dark"] .lang button[aria-pressed="true"],:root[data-theme="dark"] .skillmap button[aria-pressed="true"],:root[data-theme="dark"] .seg button[aria-pressed="true"],:root[data-theme="dark"] .langs button[aria-pressed="true"],:root[data-theme="dark"] .cmpbtn[aria-pressed="true"],:root[data-theme="dark"] .go{color:#0D1320!important}
+.dl .pf{grid-column:1/-1;background:var(--tint)}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3 2 21h20L12 3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 10v5M12 18v.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-tool" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="M4 17l6-6 4 4 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 8h5v5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="m3 7 9 6 9-6" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-rule" viewBox="0 0 24 24"><path d="M5 5h14M5 12h9M5 19h6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="m15 17 2 2 4-4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M6 2h8l5 5v15H6V2Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 2v5h5M9 13h6M9 17h6" stroke="currentColor" stroke-width="2" fill="none"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M3 12h14M12 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 4v16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-sum" viewBox="0 0 24 24"><path d="M18 4H6l7 8-7 8h12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m16 16 5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-sync" viewBox="0 0 24 24"><path d="M20 8a8 8 0 0 0-14-3L4 7M4 16a8 8 0 0 0 14 3l2-2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M4 3v4h4M20 21v-4h-4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-cmp" viewBox="0 0 24 24"><rect x="3" y="4" width="7" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="14" y="4" width="7" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5L20 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-team" viewBox="0 0 24 24"><circle cx="8" cy="9" r="3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17" cy="9" r="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2 20c1-3 3-5 6-5s5 2 6 5M12 20c.8-2.6 2.4-4.4 5-4.4s4.2 1.8 5 4.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  </defs>
+</svg>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="logo" href="#top">Hafeni<span>.</span></a>
+    <nav aria-label="Sections">
+      <div class="dot-nav">
+        <a href="#p1" style="background:var(--ink)" aria-label="Project 1">01</a>
+        <a href="#p2" style="background:var(--ink)" aria-label="Project 2">02</a>
+        <a href="#p3" style="background:var(--ink)" aria-label="Project 3">03</a>
+        <a href="#p4" style="background:var(--ink)" aria-label="Project 4">04</a>
+      </div>
+      <span class="lang" role="group" aria-label="Language">
+        <button type="button" id="btn-en" aria-pressed="true">EN</button>
+        <button type="button" id="btn-de" aria-pressed="false">DE</button>
+      </span>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+
+<div class="hero">
+  <div>
+    <p class="hello"><span data-l="en">Hi, I'm Hafeni · IT Project Manager in Switzerland</span><span data-l="de">Hallo, ich bin Hafeni · IT-Projektleiter in der Schweiz</span></p>
+    <h1 data-l="en">I turn messy data into systems that <em>run on their own.</em></h1>
+    <h1 data-l="de">Ich mache aus chaotischen Daten Systeme, die <em>selbst laufen.</em></h1>
+    <p class="sub" data-l="en">Data platforms, migrations and automation, delivered with teams in Switzerland and India.</p>
+    <p class="sub" data-l="de">Datenplattformen, Migrationen und Automatisierung, umgesetzt mit Teams in der Schweiz und in Indien.</p>
+    <div class="btns">
+      <a class="btn primary" href="#p1"><span data-l="en">See my projects ↓</span><span data-l="de">Meine Projekte ↓</span></a>
+      <a class="btn" href="#cv"><span data-l="en">Download CV</span><span data-l="de">Lebenslauf</span></a>
+    </div>
+  </div>
+  <div class="photo">
+    <img src="photo.jpg" alt="Hafeni Nghidinwa">
+    <span class="avail"><i></i><span data-l="en">Available now</span><span data-l="de">Sofort verfügbar</span></span>
+  </div>
+</div>
+
+<div class="term" aria-label="Profile summary">
+  <div class="tb"><i></i><i></i><i></i><span>~/hafeni — zsh</span></div>
+<pre><span class="p">$</span> whoami --short
+<span class="k">role</span>       <span class="s">IT Project Manager · Data · Applications</span>
+<span class="k">based_in</span>   <span class="s">Switzerland</span>   <span class="k">permit</span> <span class="s">B</span>   <span class="k">status</span> <span class="p">available</span>
+<span class="k">stack</span>      Pimcore · Zoho One · SQL · REST APIs · Spring Boot · Doxis AI.dp
+<span class="k">teams</span>      ~30 India · 8 Switzerland
+<span class="k">languages</span>  en (native) · af (native) · de (B1)
+<span class="p">$</span> ls ./projects
+<span class="s">01_invoice-automation/  02_statistics-migration/  03_prefex/  04_pension-forms/</span>
+<span class="p">$</span> <span class="cursor"></span></pre>
+</div>
+<div class="stats">
+  <a class="stat s1" href="#p1"><div class="n">2×</div><div class="l"><span data-l="en">invoices per day, same team</span><span data-l="de">Rechnungen pro Tag, gleiches Team</span></div></a>
+  <a class="stat s2" href="#p2"><div class="n">0</div><div class="l"><span data-l="en">differences in 19,000+ migrated periods</span><span data-l="de">Abweichungen in 19’000+ migrierten Perioden</span></div></a>
+  <a class="stat s3" href="#p3"><div class="n">3</div><div class="l"><span data-l="en">platform releases led as project manager</span><span data-l="de">Plattform-Releases als Projektleiter geführt</span></div></a>
+  <a class="stat s4" href="#p4"><div class="n">4</div><div class="l"><span data-l="en">languages per pension form, all checked</span><span data-l="de">Sprachen pro Vorsorge-Formular, alle geprüft</span></div></a>
+</div>
+
+<!-- ===== 01 ===== -->
+<article class="proj p1" id="p1">
+  <div class="ptop"><span class="pill"><b>01</b> <span data-l="en">Client project · Logista · 2023–today</span><span data-l="de">Kundenprojekt · Logista · 2023–heute</span></span><span class="pill users"><span data-l="en">Used by: invoice processing team and client staff</span><span data-l="de">Genutzt von: Rechnungsteam und Mitarbeitende des Kunden</span></span></div>
+  <h2 data-l="en">Invoices that <span class="hl">process themselves</span></h2>
+  <h2 data-l="de">Rechnungen, die <span class="hl">sich selbst verarbeiten</span></h2>
+  <div class="pgrid">
+    <div class="story">
+      <div class="beat"><div class="ic"><svg width="22" height="22"><use href="#i-alert"/></svg></div><div><h3 data-l="en">Problem</h3><h3 data-l="de">Problem</h3><p data-l="en">700+ suppliers, an old system, ~15% errors. Growth meant more staff.</p><p data-l="de">700+ Lieferanten, ein altes System, ca. 15 % Fehler. Wachstum hiess mehr Personal.</p></div></div>
+      <div class="beat"><div class="ic"><svg width="22" height="22"><use href="#i-tool"/></svg></div><div><h3 data-l="en">What I did</h3><h3 data-l="de">Was ich tat</h3><p data-l="en">Led the new platform, wrote the invoice rules, ran a live switch-over.</p><p data-l="de">Neue Plattform geleitet, Rechnungsregeln definiert, Live-Umstellung geführt.</p></div></div>
+      <div class="beat"><div class="ic"><svg width="22" height="22"><use href="#i-up"/></svg></div><div><h3 data-l="en">Result</h3><h3 data-l="de">Ergebnis</h3><p data-l="en">Double the capacity, 80% faster, almost no errors.</p><p data-l="de">Doppelte Kapazität, 80 % schneller, fast keine Fehler.</p></div></div>
+      <div class="tools"><span>Spring Boot</span><span>Zoho CRM</span><span>XML / SFTP</span><span>Rulesets</span></div>
+    </div>
+    <div class="card"><div class="chrome" aria-hidden="true"><i></i><i></i><i></i><span>invoice-pipeline.yml</span><em><span data-l="en">in production</span><span data-l="de">produktiv</span></em></div>
+      <div class="seg" role="group" aria-label="Before or after">
+        <button type="button" id="ba-before" aria-pressed="false"><span data-l="en">Before</span><span data-l="de">Vorher</span></button>
+        <button type="button" id="ba-after" aria-pressed="true"><span data-l="en">After</span><span data-l="de">Nachher</span></button>
+      </div>
+      <div class="ba">
+        <div class="row"><div class="big" id="m-cap">1,200+</div><div><span class="lab" data-l="en">invoices per day</span><span class="lab" data-l="de">Rechnungen pro Tag</span><div class="track"><div class="fill" id="f-cap"></div></div></div></div>
+        <div class="row"><div class="big" id="m-time">−80%</div><div><span class="lab" data-l="en">time per invoice</span><span class="lab" data-l="de">Zeit pro Rechnung</span><div class="track"><div class="fill" id="f-time"></div></div></div></div>
+        <div class="row"><div class="big" id="m-err">&lt;0.5%</div><div><span class="lab" data-l="en">error rate</span><span class="lab" data-l="de">Fehlerquote</span><div class="track"><div class="fill" id="f-err"></div></div></div></div>
+      </div>
+      <div class="pipe" aria-label="Invoice flow">
+        <div class="st"><div class="ic"><svg width="20" height="20"><use href="#i-mail"/></svg></div><span data-l="en">Mail in</span><span data-l="de">Eingang</span></div><div class="ln"></div>
+        <div class="st"><div class="ic"><svg width="20" height="20"><use href="#i-user"/></svg></div><span data-l="en">Supplier check</span><span data-l="de">Lieferant prüfen</span></div><div class="ln"></div>
+        <div class="st"><div class="ic"><svg width="20" height="20"><use href="#i-eye"/></svg></div><span>OCR</span></div><div class="ln"></div>
+        <div class="st"><div class="ic"><svg width="20" height="20"><use href="#i-rule"/></svg></div><span data-l="en">Rules</span><span data-l="de">Regeln</span></div><div class="ln"></div>
+        <div class="st"><div class="ic"><svg width="20" height="20"><use href="#i-send"/></svg></div><span>ERP</span></div>
+      </div>
+    </div>
+  </div>
+
+  <details class="deckwrap" open><summary><span><span data-l="en">Logista, step by step</span><span data-l="de">Logista, Schritt für Schritt</span><small>7 slides</small></span><span class="go"><span data-l="en">Walkthrough</span><span data-l="de">Durchgang</span></span></summary><div class="deck" data-deck="p1"><div class="slides" tabindex="0" aria-label="Slides"><div class="slide on" role="group" aria-roledescription="slide" aria-label="1 / 7"><span class="sn">01 / context</span><h4><span data-l="en">A marketplace stuck at its limit</span><span data-l="de">Ein Marktplatz an seiner Grenze</span></h4><p data-l="en">Every invoice between suppliers and customers runs through one processing team.</p><p data-l="de">Jede Rechnung zwischen Lieferanten und Kunden läuft durch ein Verarbeitungsteam.</p><div class="body"><div class="kpis"><div><b>700+</b><span data-l="en">suppliers</span><span data-l="de">Lieferanten</span></div><div><b>600+</b><span data-l="en">customers</span><span data-l="de">Kunden</span></div><div><b>~15%</b><span data-l="en">errors, data loss</span><span data-l="de">Fehler, Datenverlust</span></div></div></div></div><div class="slide" role="group" aria-roledescription="slide" aria-label="2 / 7"><span class="sn">02 / architecture</span><h4><span data-l="en">The new architecture</span><span data-l="de">Die neue Architektur</span></h4><p data-l="en">Old: Magento + Talend. New: Spring Boot with central mail, CRM validation and client-owned rules.</p><p data-l="de">Alt: Magento + Talend. Neu: Spring Boot mit zentralem Mail-Eingang, CRM-Prüfung und Regeln in Kundenhand.</p><div class="body"><div class="arch"><div class="n">Zoho Mail<small><span data-l="en">intake</span><span data-l="de">Eingang</span></small></div><span class="a">→</span><div class="n hl">Zoho CRM<small><span data-l="en">supplier check</span><span data-l="de">Lieferantenprüfung</span></small></div><span class="a">→</span><div class="n">OCR UI<small><span data-l="en">extraction</span><span data-l="de">Erfassung</span></small></div><span class="a">→</span><div class="n hl">Rules UI<small><span data-l="en">client-owned</span><span data-l="de">beim Kunden</span></small></div><span class="a">→</span><div class="n">Spring Boot<small>XML</small></div><span class="a">→</span><div class="n">SFTP<small>→ ERP</small></div></div></div></div><div class="slide" role="group" aria-roledescription="slide" aria-label="3 / 7"><span class="sn">03 / under the hood</span><h4><span data-l="en">A matching rule, simplified</span><span data-l="de">Eine Matching-Regel, vereinfacht</span></h4><p data-l="en">I define rules like this; the developers implement them in the backend.</p><p data-l="de">Ich definiere Regeln wie diese; die Entwickler setzen sie im Backend um.</p><div class="body"><pre class="code"><span class="c">// simplified example</span>
+{
+  <span class="k">"rule"</span>: <span class="s">"seller_match"</span>,
+  <span class="k">"source"</span>: <span class="s">"zoho_crm.suppliers"</span>,
+  <span class="k">"match_order"</span>: [
+    [<span class="s">"vat_number"</span>],
+    [<span class="s">"postcode"</span>, <span class="s">"street"</span>],
+    { <span class="k">"name"</span>: <span class="s">"starts_with | ends_with | contains"</span> }
+  ],
+  <span class="k">"on_match"</span>: { <span class="k">"trusted"</span>: <span class="s">"xml_to_sftp"</span>, <span class="k">"other"</span>: <span class="s">"quick_review"</span> },
+  <span class="k">"on_no_match"</span>: <span class="s">"manual_review"</span>
+}</pre></div></div><div class="slide" role="group" aria-roledescription="slide" aria-label="4 / 7"><span class="sn">04 / problems solved</span><h4><span data-l="en">Real-world problems, fixed with my team</span><span data-l="de">Echte Probleme, mit meinem Team gelöst</span></h4><p data-l="en">Issues from live operation, and how we handled them.</p><p data-l="de">Probleme aus dem laufenden Betrieb und wie wir sie gelöst haben.</p><div class="body"><div class="fixes"><div><span class="pb"><b><span data-l="en">Wrong names from OCR</span><span data-l="de">Falsche Namen aus OCR</span></b><span data-l="en">Seller or customer name sometimes wrong</span><span data-l="de">Verkäufer- oder Kundenname manchmal falsch</span></span><span class="ar">→</span><span class="fx"><span data-l="en">Compare with the CRM lists (starts with / ends with / contains) and show the correct name</span><span data-l="de">Abgleich mit den CRM-Listen (beginnt mit / endet mit / enthält) und korrekten Namen anzeigen</span></span></div><div><span class="pb"><b><span data-l="en">Real customer hidden</span><span data-l="de">Echter Kunde versteckt</span></b><span data-l="en">Extracted data showed the buying group, not the end customer</span><span data-l="de">Erfasste Daten zeigten die Einkaufsgruppe, nicht den Endkunden</span></span><span class="ar">→</span><span class="fx"><span data-l="en">Keyword rules in DE/FR/IT/EN first; then a CRM lookup with a review queue, old rules kept as fallback</span><span data-l="de">Zuerst Keyword-Regeln in DE/FR/IT/EN; dann CRM-Abgleich mit Prüf-Warteschlange, alte Regeln als Fallback</span></span></div><div><span class="pb"><b><span data-l="en">Suppliers with branches</span><span data-l="de">Lieferanten mit Filialen</span></b><span data-l="en">Branch not in the structured data</span><span data-l="de">Filiale nicht in den strukturierten Daten</span></span><span class="ar">→</span><span class="fx"><span data-l="en">Read it from the invoice text with start and end markers; supplier + branch became the unique key</span><span data-l="de">Aus dem Rechnungstext mit Start- und End-Markern gelesen; Lieferant + Filiale als eindeutiger Schlüssel</span></span></div><div><span class="pb"><b><span data-l="en">Signed PDFs slipping through</span><span data-l="de">Signierte PDFs rutschten durch</span></b><span data-l="en">A 5-minute job missed some signed invoices</span><span data-l="de">Ein 5-Minuten-Job verpasste einzelne signierte Rechnungen</span></span><span class="ar">→</span><span class="fx"><span data-l="en">Signature removed at submission instead, with 3 retries, logging and a weekly safety scan</span><span data-l="de">Signatur stattdessen beim Einreichen entfernt, mit 3 Wiederholungen, Logging und wöchentlichem Kontroll-Scan</span></span></div><div><span class="pb"><b><span data-l="en">Vendor limits</span><span data-l="de">Grenzen beim Anbieter</span></b><span data-l="en">Files over 350 KB rejected; outages and timeouts left ~195 invoices unprocessed</span><span data-l="de">Dateien über 350 KB abgelehnt; Ausfälle und Timeouts liessen ca. 195 Rechnungen liegen</span></span><span class="ar">→</span><span class="fx"><span data-l="en">Reprocessed oversized files, sent very large ones in parts, traced and resubmitted the stuck invoices</span><span data-l="de">Zu grosse Dateien neu verarbeitet, sehr grosse in Teilen gesendet, liegengebliebene Rechnungen gefunden und neu eingereicht</span></span></div></div></div></div><div class="slide" role="group" aria-roledescription="slide" aria-label="5 / 7"><span class="sn">05 / who decided what</span><h4><span data-l="en">Who decided what</span><span data-l="de">Wer was entschieden hat</span></h4><p data-l="en">The client sets the requirements. I'm responsible for delivering them and for the decisions in between.</p><p data-l="de">Der Kunde gibt die Anforderungen vor. Ich bin für die Umsetzung verantwortlich und für die Entscheidungen dazwischen.</p><div class="body"><div class="who"><div><span class="tag"><span data-l="en">Client &amp; management</span><span data-l="de">Kunde &amp; Geschäftsleitung</span></span><ul><li><span data-l="en">Replace the whole platform</span><span data-l="de">Ganze Plattform ersetzen</span></li><li><span data-l="en">Rules managed by the client</span><span data-l="de">Regeln beim Kunden</span></li><li><span data-l="en">Cut-over date and go/no-go</span><span data-l="de">Umstellungstermin und Go/No-Go</span></li><li><span data-l="en">Already processed signed invoices stay as they are</span><span data-l="de">Bereits verarbeitete signierte Rechnungen bleiben unverändert</span></li></ul></div><div class="me"><span class="tag"><span data-l="en">Me, with the developers</span><span data-l="de">Ich, mit den Entwicklern</span></span><ul><li><span data-l="en">Which extracted fields go into the API calls, which objects to read</span><span data-l="de">Welche erfassten Felder in die API-Calls gehen, welche Objekte gelesen werden</span></li><li><span data-l="en">How VAT lines are handled</span><span data-l="de">Wie MWST-Positionen behandelt werden</span></li><li><span data-l="en">Keyword rules to trace sellers and customers</span><span data-l="de">Keyword-Regeln, um Verkäufer und Kunden zu finden</span></li><li><span data-l="en">Accepted a developer's idea: CRM lookup for customers</span><span data-l="de">Idee eines Entwicklers übernommen: CRM-Abgleich für Kunden</span></li></ul></div><div class="me"><span class="tag"><span data-l="en">My call</span><span data-l="de">Mein Entscheid</span></span><ul><li><span data-l="en">Planned the cut-over steps and the fallback</span><span data-l="de">Umstellungsschritte und Fallback geplant</span></li><li><span data-l="en">CRM fallback when OCR names are wrong</span><span data-l="de">CRM-Abgleich, wenn OCR-Namen falsch sind</span></li><li><span data-l="en">Seller and customer rules kept fully separate</span><span data-l="de">Verkäufer- und Kundenregeln strikt getrennt</span></li><li><span data-l="en">A person always reviews unmatched invoices</span><span data-l="de">Nicht zugeordnete Rechnungen prüft immer eine Person</span></li></ul></div></div></div></div><div class="slide" role="group" aria-roledescription="slide" aria-label="6 / 7"><span class="sn">06 / cut-over</span><h4><span data-l="en">Switching a live system</span><span data-l="de">Ein Live-System umstellen</span></h4><p data-l="en">Planned with the client, the OCR vendor and the developers. Rollback was ready the whole time.</p><p data-l="de">Geplant mit Kunde, OCR-Anbieter und Entwicklern. Ein Rollback war jederzeit bereit.</p><div class="body"><div class="ladder"><div><b>D−8…−1</b><span data-l="en">Parallel tests: old vs new, OCR, UI, XML</span><span data-l="de">Paralleltests: alt gegen neu, OCR, UI, XML</span></div><div><b>D0</b><span data-l="en">Cut-off: freeze, empty all queues</span><span data-l="de">Cut-off: einfrieren, alle Queues leeren</span></div><div><b>D+1</b><span data-l="en">Clean-up: zero backlog</span><span data-l="de">Bereinigung: null Rückstand</span></div><div><b>D+2…+3</b><span data-l="en">Migration, go/no-go decision</span><span data-l="de">Migration, Go/No-Go-Entscheid</span></div><div><b>D+4</b><span data-l="en">Live, buffered invoices released</span><span data-l="de">Live, gepufferte Rechnungen freigegeben</span></div></div></div></div><div class="slide" role="group" aria-roledescription="slide" aria-label="7 / 7"><span class="sn">07 / results</span><h4><span data-l="en">What changed</span><span data-l="de">Was sich verändert hat</span></h4><p data-l="en">Same team, double the output. Client staff now change rules themselves.</p><p data-l="de">Gleiches Team, doppelte Leistung. Mitarbeitende des Kunden ändern Regeln jetzt selbst.</p><div class="body"><div class="kpis"><div><b>2×</b><span data-l="en">invoices per day (1,200+)</span><span data-l="de">Rechnungen pro Tag (1’200+)</span></div><div><b>−80%</b><span data-l="en">time per invoice</span><span data-l="de">Zeit pro Rechnung</span></div><div><b>&lt;0.5%</b><span data-l="en">error rate, no data lost</span><span data-l="de">Fehlerquote, keine Daten verloren</span></div></div></div></div></div><div class="dnav"><button type="button" class="prev" aria-label="Previous">←</button><div class="dots"></div><span class="ct"></span><button type="button" class="next" aria-label="Next">→</button></div></div></details>
+  <details class="try">
+    <summary><span data-l="en">Who sent this invoice? Try the supplier check</span><span data-l="de">Wer hat die Rechnung geschickt? Lieferantenprüfung testen</span><span class="go"><span data-l="en">Try it</span><span data-l="de">Testen</span></span></summary>
+    <div class="in">
+      <span class="made" data-l="en">Made-up suppliers</span><span class="made" data-l="de">Erfundene Lieferanten</span>
+      <div class="row3">
+        <div class="field"><label for="in-vat"><span data-l="en">VAT number</span><span data-l="de">MWST-Nr.</span></label><input id="in-vat" value="CHE-112.345.678" autocomplete="off"></div>
+        <div class="field"><label for="in-zip"><span data-l="en">Postcode</span><span data-l="de">PLZ</span></label><input id="in-zip" value="8004" autocomplete="off"></div>
+        <div class="field"><label for="in-street"><span data-l="en">Street</span><span data-l="de">Strasse</span></label><input id="in-street" value="Musterstrasse 12" autocomplete="off"></div>
+        <div class="field" style="grid-column:1/-1"><label for="in-name"><span data-l="en">Seller name read by OCR</span><span data-l="de">Von OCR gelesener Verkäufername</span></label><input id="in-name" value="ALPENHOLZ AG ZUERICH" autocomplete="off"></div>
+      </div>
+      <div class="result" id="match-result" aria-live="polite"></div>
+      <p class="note" data-l="en">Try it: delete the VAT number and the postcode. The name check still finds the right supplier in the CRM.</p>
+      <p class="note" data-l="de">Testen Sie: Löschen Sie MWST-Nummer und PLZ. Der Namensabgleich findet den richtigen Lieferanten im CRM trotzdem.</p>
+    </div>
+  </details>
+  
+</article>
+
+<!-- ===== 02 ===== -->
+<article class="proj p2" id="p2">
+  <div class="ptop"><span class="pill"><b>02</b> <span data-l="en">Client project · Swiss association management firm · 2026</span><span data-l="de">Kundenprojekt · Schweizer Verbandsmanagement-Firma · 2026</span></span><span class="pill users"><span data-l="en">Used by: ~300 member companies and the firm's admins</span><span data-l="de">Genutzt von: ca. 300 Mitgliedsfirmen und den Admins der Firma</span></span></div>
+  <h2 data-l="en">Years of statistics, moved with <span class="hl">zero differences</span></h2>
+  <h2 data-l="de">Jahrelange Statistiken, migriert mit <span class="hl">null Abweichungen</span></h2>
+  <div class="pgrid">
+    <div class="story">
+      <div class="beat"><div class="ic"><svg width="22" height="22"><use href="#i-alert"/></svg></div><div><h3>Problem</h3><p data-l="en">Industry statistics lived in Excel, Access and an undocumented database.</p><p data-l="de">Branchenstatistiken lagen in Excel, Access und einer undokumentierten Datenbank.</p></div></div>
+      <div class="beat"><div class="ic"><svg width="22" height="22"><use href="#i-tool"/></svg></div><div><h3 data-l="en">What I did</h3><h3 data-l="de">Was ich tat</h3><p data-l="en">Led the data management: decoded the old data with the team, designed the rules, set the priorities.</p><p data-l="de">Datenmanagement geführt: Altdaten mit dem Team entschlüsselt, Regeln konzipiert, Prioritäten gesetzt.</p></div></div>
+      <div class="beat"><div class="ic"><svg width="22" height="22"><use href="#i-up"/></svg></div><div><h3 data-l="en">Result</h3><h3 data-l="de">Ergebnis</h3><p data-l="en">Every migrated period matches the source. One rule model for all ~15 mandates.</p><p data-l="de">Jede migrierte Periode stimmt mit der Quelle überein. Ein Regelmodell für alle ca. 15 Mandate.</p></div></div>
+      <div class="tools"><span>Pimcore</span><span>SQL</span><span>Data mapping</span><span>Rule engine</span></div>
+    </div>
+    <div class="card"><div class="chrome" aria-hidden="true"><i></i><i></i><i></i><span>migration/reconcile.sql</span><em><span data-l="en">in progress</span><span data-l="de">in Arbeit</span></em></div>
+      <div class="zero"><div class="n">0</div><p data-l="en"><b>differences</b> after checking every migrated period against the old database.</p><p data-l="de"><b>Abweichungen</b> nach Prüfung jeder migrierten Periode gegen die Altdatenbank.</p></div>
+      <div class="mini-stats">
+        <div><b>180+</b><span data-l="en">tables decoded</span><span data-l="de">Tabellen entschlüsselt</span></div>
+        <div><b>14M+</b><span data-l="en">data cells</span><span data-l="de">Datenzellen</span></div>
+        <div><b class="cnt" data-to="19000">19,000+</b><span data-l="en">periods moved</span><span data-l="de">Perioden migriert</span></div>
+      </div>
+      <div class="pipe" aria-label="Rule phases">
+        <div class="st"><div class="ic"><svg width="20" height="20"><use href="#i-rule"/></svg></div><span data-l="en">Check</span><span data-l="de">Prüfen</span></div><div class="ln"></div>
+        <div class="st"><div class="ic"><svg width="20" height="20"><use href="#i-sum"/></svg></div><span data-l="en">Add up</span><span data-l="de">Summieren</span></div><div class="ln"></div>
+        <div class="st"><div class="ic"><svg width="20" height="20"><use href="#i-lock"/></svg></div><span data-l="en">Protect</span><span data-l="de">Schützen</span></div><div class="ln"></div>
+        <div class="st"><div class="ic"><svg width="20" height="20"><use href="#i-chart"/></svg></div><span data-l="en">Publish</span><span data-l="de">Publizieren</span></div>
+      </div>
+    </div>
+  </div>
+
+  <details class="deckwrap"><summary><span><span data-l="en">The migration, step by step</span><span data-l="de">Die Migration, Schritt für Schritt</span><small>7 slides</small></span><span class="go"><span data-l="en">Walkthrough</span><span data-l="de">Durchgang</span></span></summary><div class="deck" data-deck="p2"><div class="slides" tabindex="0" aria-label="Slides"><div class="slide on" role="group" aria-roledescription="slide" aria-label="1 / 7"><span class="sn">01 / starting point</span><h4><span data-l="en">A system nobody could explain</span><span data-l="de">Ein System, das niemand erklären konnte</span></h4><p data-l="en">Excel, Access and a SQL Server database with no documentation, maintained by one external vendor.</p><p data-l="de">Excel, Access und eine SQL-Server-Datenbank ohne Dokumentation, betreut von einem externen Anbieter.</p><div class="body"><div class="kpis"><div><b>180+</b><span data-l="en">tables, no foreign keys</span><span data-l="de">Tabellen, ohne Fremdschlüssel</span></div><div><b>14M+</b><span data-l="en">data cells</span><span data-l="de">Datenzellen</span></div><div><b>~15</b><span data-l="en">mandates, 300+ companies</span><span data-l="de">Mandate, 300+ Firmen</span></div></div></div></div><div class="slide" role="group" aria-roledescription="slide" aria-label="2 / 7"><span class="sn">02 / approach</span><h4><span data-l="en">Map, migrate, reconcile</span><span data-l="de">Mappen, migrieren, abgleichen</span></h4><p data-l="en">Every period is checked against the source until the numbers match exactly.</p><p data-l="de">Jede Periode wird gegen die Quelle geprüft, bis die Zahlen exakt übereinstimmen.</p><div class="body"><div class="arch"><div class="n">SQL Server<small><span data-l="en">legacy</span><span data-l="de">Altsystem</span></small></div><span class="a">→</span><div class="n hl"><span data-l="en">Mapping</span><span data-l="de">Mapping</span><small><span data-l="en">source → target</span><span data-l="de">Quelle → Ziel</span></small></div><span class="a">→</span><div class="n">Pimcore<small>MySQL</small></div><span class="a">→</span><div class="n hl"><span data-l="en">Reconcile</span><span data-l="de">Abgleich</span><small><span data-l="en">diff = 0 ?</span><span data-l="de">Diff = 0 ?</span></small></div><span class="a">↺</span></div></div></div><div class="slide" role="group" aria-roledescription="slide" aria-label="3 / 7"><span class="sn">03 / rule model</span><h4><span data-l="en">One rule model, with inheritance</span><span data-l="de">Ein Regelmodell, mit Vererbung</span></h4><p data-l="en">Base rules apply everywhere; a mandate or a report only overrides what is different. Every change is versioned.</p><p data-l="de">Basisregeln gelten überall; ein Mandat oder Bericht überschreibt nur, was anders ist. Jede Änderung ist versioniert.</p><div class="body"><div class="split"><div class="inherit"><span>base</span><span class="a" style="border:0;background:none">→</span><span>mandate</span><span class="a" style="border:0;background:none">→</span><span class="hl">report</span></div><div class="ladder"><div><b><span data-l="en">Phase 1</span><span data-l="de">Phase 1</span></b><span data-l="en">Entry checks</span><span data-l="de">Eingabeprüfung</span></div><div><b><span data-l="en">Phase 2</span><span data-l="de">Phase 2</span></b><span data-l="en">Aggregation</span><span data-l="de">Aggregation</span></div><div><b><span data-l="en">Phase 3</span><span data-l="de">Phase 3</span></b><span data-l="en">Confidentiality</span><span data-l="de">Geheimhaltung</span></div><div><b><span data-l="en">Phase 4</span><span data-l="de">Phase 4</span></b><span data-l="en">Publication</span><span data-l="de">Publikation</span></div></div></div></div></div><div class="slide" role="group" aria-roledescription="slide" aria-label="4 / 7"><span class="sn">04 / under the hood</span><h4><span data-l="en">A confidentiality rule, simplified</span><span data-l="de">Eine Geheimhaltungsregel, vereinfacht</span></h4><p data-l="en">Example values. In the platform, limits are set per mandate.</p><p data-l="de">Beispielwerte. In der Plattform werden die Grenzen pro Mandat gesetzt.</p><div class="body"><pre class="code"><span class="c"># simplified example – checked for every cell</span>
+<span class="k">secrecy</span>:
+  <span class="k">min_reporters</span>: <span class="n">3</span>
+  <span class="k">max_top1_share</span>: <span class="n">0.70</span>
+  <span class="k">max_top2_share</span>: <span class="n">0.80</span>
+  <span class="k">entity_groups_count_as_one</span>: <span class="n">true</span>
+  <span class="k">on_fail</span>:   <span class="s">try_country_group</span> <span class="c"># e.g. merge with neighbour</span>
+  <span class="k">then</span>:      <span class="s">suppress_cell</span>      <span class="c"># shown as *</span>
+  <span class="k">grand_total</span>: <span class="s">always_published</span></pre></div></div><div class="slide" role="group" aria-roledescription="slide" aria-label="5 / 7"><span class="sn">05 / who decided what</span><h4><span data-l="en">Who decided what</span><span data-l="de">Wer was entschieden hat</span></h4><p data-l="en">The client provides the requirements. I'm responsible for the data management and the decisions that keep it on course.</p><p data-l="de">Der Kunde liefert die Anforderungen. Ich bin für das Datenmanagement verantwortlich und für die Entscheide, die es auf Kurs halten.</p><div class="body"><div class="who"><div><span class="tag"><span data-l="en">Client</span><span data-l="de">Kunde</span></span><ul><li><span data-l="en">Requirements and report layouts</span><span data-l="de">Anforderungen und Berichtslayouts</span></li><li><span data-l="en">Confidentiality limits per statistic</span><span data-l="de">Geheimhaltungsgrenzen pro Statistik</span></li><li><span data-l="en">How their data is shown, e.g. calendar weeks</span><span data-l="de">Wie ihre Daten angezeigt werden, z. B. Kalenderwochen</span></li></ul></div><div class="me"><span class="tag"><span data-l="en">Me, with the team</span><span data-l="de">Ich, mit dem Team</span></span><ul><li><span data-l="en">Extract mandate data from one large legacy table</span><span data-l="de">Mandatsdaten aus einer grossen Alttabelle extrahieren</span></li><li><span data-l="en">Clean, link, new database and schema</span><span data-l="de">Bereinigen, verknüpfen, neue Datenbank und Schema</span></li><li><span data-l="en">Move formulas into code, so new data adds up instantly</span><span data-l="de">Formeln in den Code verschieben, damit neue Daten sofort summiert werden</span></li><li><span data-l="en">Build the rulesets</span><span data-l="de">Regelwerke aufbauen</span></li></ul></div><div class="me"><span class="tag"><span data-l="en">My call</span><span data-l="de">Mein Entscheid</span></span><ul><li><span data-l="en">Priorities and the sprint plan to the client workshop</span><span data-l="de">Prioritäten und Sprintplan bis zum Kunden-Workshop</span></li><li><span data-l="en">One rule model with inheritance (base → mandate → report)</span><span data-l="de">Ein Regelmodell mit Vererbung (Basis → Mandat → Bericht)</span></li><li><span data-l="en">Keep only the rules that matter: limits the client sets, simple input checks</span><span data-l="de">Nur nötige Regeln: vom Kunden gesetzte Grenzen, einfache Eingabeprüfungen</span></li><li><span data-l="en">I test the rulesets myself, with the testers</span><span data-l="de">Ich teste die Regelwerke selbst, mit den Testern</span></li></ul></div></div></div></div><div class="slide" role="group" aria-roledescription="slide" aria-label="6 / 7"><span class="sn">06 / problems solved</span><h4><span data-l="en">Problems solved on the way</span><span data-l="de">Probleme, die wir unterwegs gelöst haben</span></h4><p data-l="en">What the legacy data hid, and how the team and I handled it.</p><p data-l="de">Was die Altdaten verbargen und wie das Team und ich es gelöst haben.</p><div class="body"><div class="fixes"><div><span class="pb"><b><span data-l="en">Hidden status flags</span><span data-l="de">Versteckte Status-Flags</span></b><span data-l="en">Locked and deactivated periods were not documented</span><span data-l="de">Gesperrte und deaktivierte Perioden waren nicht dokumentiert</span></span><span class="ar">→</span><span class="fx"><span data-l="en">Traced where they are stored and carried them over 1:1: 19,000+ periods, reconciled with 0 differences</span><span data-l="de">Gefunden, wo sie gespeichert sind, und 1:1 übernommen: 19’000+ Perioden, abgeglichen mit 0 Abweichungen</span></span></div><div><span class="pb"><b><span data-l="en">Company mergers</span><span data-l="de">Firmenfusionen</span></b><span data-l="en">Risk of counting a company twice</span><span data-l="de">Risiko, eine Firma doppelt zu zählen</span></span><span class="ar">→</span><span class="fx"><span data-l="en">Checked it in the figures, corrected an assumption about which periods were affected, proposed a "merged into" link for future mergers</span><span data-l="de">In den Zahlen geprüft, eine Annahme zu den betroffenen Perioden korrigiert, eine «fusioniert mit»-Verknüpfung für künftige Fusionen vorgeschlagen</span></span></div><div><span class="pb"><b><span data-l="en">Import errors</span><span data-l="de">Importfehler</span></b><span data-l="en">Wrong join logic and duplicate rows in the data load</span><span data-l="de">Falsche Join-Logik und doppelte Zeilen beim Datenimport</span></span><span class="ar">→</span><span class="fx"><span data-l="en">Found them during reconciliation and gave the developers precise technical feedback to fix them</span><span data-l="de">Beim Abgleich gefunden und den Entwicklern präzises technisches Feedback zur Behebung gegeben</span></span></div><div><span class="pb"><b><span data-l="en">Unreliable recent data</span><span data-l="de">Unzuverlässige neue Daten</span></b><span data-l="en">Recent figures affected by mergers and corrections</span><span data-l="de">Neue Zahlen von Fusionen und Korrekturen betroffen</span></span><span class="ar">→</span><span class="fx"><span data-l="en">Kept testing on the agreed stable year; a full data refresh comes after testing</span><span data-l="de">Tests mit dem vereinbarten stabilen Jahr; ein vollständiger Daten-Refresh folgt nach den Tests</span></span></div></div></div></div><div class="slide" role="group" aria-roledescription="slide" aria-label="7 / 7"><span class="sn">07 / status</span><h4><span data-l="en">Where it stands</span><span data-l="de">Wo es steht</span></h4><p data-l="en">Migration reconciled; reports and rules being built with the client. Not live yet.</p><p data-l="de">Migration abgeglichen; Berichte und Regeln entstehen mit dem Kunden. Noch nicht live.</p><div class="body"><div class="kpis"><div><b>19,000+</b><span data-l="en">periods migrated</span><span data-l="de">Perioden migriert</span></div><div><b>0</b><span data-l="en">differences</span><span data-l="de">Abweichungen</span></div><div><b>5 · 6</b><span data-l="en">statistics · user roles</span><span data-l="de">Statistiken · Benutzerrollen</span></div></div></div></div></div><div class="dnav"><button type="button" class="prev" aria-label="Previous">←</button><div class="dots"></div><span class="ct"></span><button type="button" class="next" aria-label="Next">→</button></div></div></details>
+  <details class="try">
+    <summary><span data-l="en">Can this number be published? Try the confidentiality check</span><span data-l="de">Darf diese Zahl veröffentlicht werden? Geheimhaltung testen</span><span class="go"><span data-l="en">Try it</span><span data-l="de">Testen</span></span></summary>
+    <div class="in">
+      <span class="made" data-l="en">Made-up figures · example limits</span><span class="made" data-l="de">Erfundene Zahlen · Beispielgrenzen</span>
+      <p data-l="en" style="margin:8px 0 0">A total is only published if no single company can be identified from it. Drag one company up and watch the number disappear.</p>
+      <p data-l="de" style="margin:8px 0 0">Eine Summe wird nur veröffentlicht, wenn keine einzelne Firma daraus erkennbar ist. Ziehen Sie eine Firma nach oben und sehen Sie, wie die Zahl verschwindet.</p>
+      <div class="cos" id="cos"></div>
+      <div class="cellbox"><div class="v" id="cell-val">–</div><div class="why" id="cell-why"></div></div>
+    </div>
+  </details>
+  <details class="try">
+    <summary><span data-l="en">Typing an odd number? Try the plausibility check</span><span data-l="de">Ungewöhnliche Zahl eingegeben? Plausibilität testen</span><span class="go"><span data-l="en">Try it</span><span data-l="de">Testen</span></span></summary>
+    <div class="in">
+      <span class="made" data-l="en">Made-up figures · last month: 12,400 t</span><span class="made" data-l="de">Erfundene Zahlen · Vormonat: 12’400 t</span>
+      <div class="field" style="margin-top:10px"><label for="pl-in"><span data-l="en">This month (tonnes)</span><span data-l="de">Dieser Monat (Tonnen)</span></label><input id="pl-in" value="14900" inputmode="decimal" autocomplete="off"></div>
+      <div class="result" id="pl-result" aria-live="polite"></div>
+    </div>
+  </details>
+</article>
+
+<!-- ===== 03 ===== -->
+<article class="proj p3" id="p3">
+  <div class="ptop"><span class="pill"><b>03</b> <span data-l="en">Group project · prefex.ch · 2025</span><span data-l="de">Gruppenprojekt · prefex.ch · 2025</span></span><span class="pill users"><span data-l="en">Used by: the public and partner companies</span><span data-l="de">Genutzt von: Öffentlichkeit und Partnerfirmen</span></span></div>
+  <h2 data-l="en">Pension funds, <span class="hl">compared in one place</span></h2>
+  <h2 data-l="de">Vorsorgefonds, <span class="hl">an einem Ort verglichen</span></h2>
+  <div class="pgrid">
+    <div class="story">
+      <div class="beat"><div class="ic"><svg width="22" height="22"><use href="#i-alert"/></svg></div><div><h3>Problem</h3><p data-l="en">Comparing 2nd and 3rd pillar (BVG) investments was hard for anyone.</p><p data-l="de">Anlagen der 2. und 3. Säule (BVG) zu vergleichen war schwierig.</p></div></div>
+      <div class="beat"><div class="ic"><svg width="22" height="22"><use href="#i-tool"/></svg></div><div><h3 data-l="en">What I did</h3><h3 data-l="de">Was ich tat</h3><p data-l="en">Project manager for Releases 3–5; led the team for providers, documents and factsheets.</p><p data-l="de">Projektleiter für Releases 3–5; Team für Anbieter, Dokumente und Factsheets geführt.</p></div></div>
+      <div class="beat"><div class="ic"><svg width="22" height="22"><use href="#i-up"/></svg></div><div><h3 data-l="en">Result</h3><h3 data-l="de">Ergebnis</h3><p data-l="en">Search, compare and track funds with data updated every day.</p><p data-l="de">Fonds suchen, vergleichen und verfolgen, mit täglich aktualisierten Daten.</p></div></div>
+      <div class="tools"><span>Pimcore</span><span>FTP imports</span><span>FX API</span><span>GitHub</span></div>
+    </div>
+    <div class="card"><div class="chrome" aria-hidden="true"><i></i><i></i><i></i><span>prefex.ch</span><em><span data-l="en">live</span><span data-l="de">live</span></em></div>
+      <h4 data-l="en">What users can do</h4><h4 data-l="de">Was Benutzer tun können</h4>
+      <div class="feat-icons" style="margin-top:0">
+        <div><span class="ic"><svg width="24" height="24"><use href="#i-search"/></svg></span><span data-l="en">Search &amp; filter</span><span data-l="de">Suchen &amp; filtern</span></div>
+        <div><span class="ic"><svg width="24" height="24"><use href="#i-cmp"/></svg></span><span data-l="en">Compare</span><span data-l="de">Vergleichen</span></div>
+        <div><span class="ic"><svg width="24" height="24"><use href="#i-star"/></svg></span><span data-l="en">Watchlists</span><span data-l="de">Watchlists</span></div>
+        <div><span class="ic"><svg width="24" height="24"><use href="#i-sync"/></svg></span><span data-l="en">Daily data</span><span data-l="de">Tägliche Daten</span></div>
+      </div>
+      <div class="fundcards" style="margin-top:14px" aria-hidden="true">
+        <div class="fc"><div><b>Alpine BVG 25</b><small data-l="en">Strategy fund · TER 0.62%</small><small data-l="de">Strategiefonds · TER 0,62 %</small></div><div class="bars"><i style="height:40%"></i><i style="height:55%"></i><i style="height:48%"></i><i style="height:70%"></i></div></div>
+        <div class="fc"><div><b>Lakeside Growth</b><small data-l="en">Asset mgmt mandate · TER 0.88%</small><small data-l="de">Vermögensverwaltung · TER 0,88 %</small></div><div class="bars"><i style="height:35%"></i><i style="height:60%"></i><i style="height:72%"></i><i style="height:92%"></i></div></div>
+      </div>
+      <p class="note" data-l="en">Example funds, made up.</p><p class="note" data-l="de">Beispielfonds, erfunden.</p>
+    </div>
+  </div>
+
+  <details class="deckwrap"><summary><span><span data-l="en">Prefex, step by step</span><span data-l="de">Prefex, Schritt für Schritt</span><small>4 slides</small></span><span class="go"><span data-l="en">Walkthrough</span><span data-l="de">Durchgang</span></span></summary><div class="deck" data-deck="p3"><div class="slides" tabindex="0" aria-label="Slides"><div class="slide on" role="group" aria-roledescription="slide" aria-label="1 / 4"><span class="sn">01 / context</span><h4><span data-l="en">Three product types, one comparison</span><span data-l="de">Drei Produkttypen, ein Vergleich</span></h4><p data-l="en">For the 2nd and 3rd pillar (BVG).</p><p data-l="de">Für die 2. und 3. Säule (BVG).</p><div class="body"><div class="kpis"><div><b style="font-size:20px"><span data-l="en">Strategy funds</span><span data-l="de">Strategiefonds</span></b>BVV2</div><div><b style="font-size:20px"><span data-l="en">Investment funds</span><span data-l="de">Anlagefonds</span></b><span data-l="en">pure</span><span data-l="de">rein</span></div><div><b style="font-size:20px"><span data-l="en">Mandates</span><span data-l="de">Mandate</span></b><span data-l="en">asset management</span><span data-l="de">Vermögensverwaltung</span></div></div></div></div><div class="slide" role="group" aria-roledescription="slide" aria-label="2 / 4"><span class="sn">02 / data flow</span><h4><span data-l="en">Fresh fund data every day</span><span data-l="de">Täglich frische Fondsdaten</span></h4><p data-l="en">Fund data comes from external data providers and is updated automatically; exchange rates come from a live API.</p><p data-l="de">Fondsdaten kommen von externen Datenanbietern und werden automatisch aktualisiert; Wechselkurse kommen aus einer Live-API.</p><div class="body"><div class="arch"><div class="n"><span data-l="en">Data providers</span><span data-l="de">Datenanbieter</span><small><span data-l="en">fund universe</span><span data-l="de">Fonds-Universum</span></small></div><span class="a">→</span><div class="n"><span data-l="en">Our server</span><span data-l="de">Unser Server</span><small><span data-l="en">daily files</span><span data-l="de">tägliche Dateien</span></small></div><span class="a">→</span><div class="n hl">Cron jobs<small><span data-l="en">import</span><span data-l="de">Import</span></small></div><span class="a">→</span><div class="n">Pimcore<small><span data-l="en">fund objects</span><span data-l="de">Fondsobjekte</span></small></div><span class="a">→</span><div class="n">prefex.ch</div><span class="a">+</span><div class="n hl">FX API<small>CHF · EUR · USD</small></div></div></div></div><div class="slide" role="group" aria-roledescription="slide" aria-label="3 / 4"><span class="sn">03 / features</span><h4><span data-l="en">What we shipped</span><span data-l="de">Was wir geliefert haben</span></h4><div class="body"><ul class="l"><li><span data-l="en">Search by name, ISIN or provider, with 10 filters</span><span data-l="de">Suche nach Name, ISIN oder Anbieter, mit 10 Filtern</span></li><li><span data-l="en">Fund pages with 6 tabs: overview, performance, structure, documents, risk & return, figures</span><span data-l="de">Fondsseiten mit 6 Reitern: Übersicht, Performance, Struktur, Dokumente, Risiko & Rendite, Kennzahlen</span></li><li><span data-l="en">Comparison list and logged-in watchlists</span><span data-l="de">Vergleichsliste und Watchlists mit Login</span></li><li><span data-l="en">Onboarding: choose pillar, accept disclaimer</span><span data-l="de">Onboarding: Säule wählen, Disclaimer bestätigen</span></li><li><span data-l="en">Partner pages: VIP, standard, media</span><span data-l="de">Partnerseiten: VIP, Standard, Medien</span></li></ul></div></div><div class="slide" role="group" aria-roledescription="slide" aria-label="4 / 4"><span class="sn">04 / who decided what</span><h4><span data-l="en">Who decided what</span><span data-l="de">Wer was entschieden hat</span></h4><p data-l="en">Liberty set the direction. I ran the delivery, from design approval to release.</p><p data-l="de">Liberty gab die Richtung vor. Ich führte die Umsetzung, von der Design-Freigabe bis zum Release.</p><div class="body"><div class="who"><div><span class="tag"><span data-l="en">Client &amp; management</span><span data-l="de">Kunde &amp; Geschäftsleitung</span></span><ul><li><span data-l="en">Scope of each release</span><span data-l="de">Umfang jedes Releases</span></li><li><span data-l="en">Which providers and partners appear</span><span data-l="de">Welche Anbieter und Partner erscheinen</span></li></ul></div><div class="me"><span class="tag"><span data-l="en">Me, with the team</span><span data-l="de">Ich, mit dem Team</span></span><ul><li><span data-l="en">Pimcore classes and objects for the funds</span><span data-l="de">Pimcore-Klassen und -Objekte für die Fonds</span></li><li><span data-l="en">Daily imports via cron jobs, exchange-rate API</span><span data-l="de">Tägliche Importe per Cronjob, Wechselkurs-API</span></li><li><span data-l="en">Releases dev → stage → live, code on GitHub</span><span data-l="de">Releases Dev → Stage → Live, Code auf GitHub</span></li></ul></div><div class="me"><span class="tag"><span data-l="en">My call</span><span data-l="de">Mein Entscheid</span></span><ul><li><span data-l="en">Approved designs and functions before release</span><span data-l="de">Designs und Funktionen vor dem Release freigegeben</span></li><li><span data-l="en">Point of contact for the fund data providers</span><span data-l="de">Ansprechperson für die Fondsdatenanbieter</span></li><li><span data-l="en">Set up a provider myself first, then led the team doing it</span><span data-l="de">Einen Anbieter zuerst selbst erfasst, dann das Team dafür geführt</span></li><li><span data-l="en">Weekly meetings with developers and client</span><span data-l="de">Wöchentliche Meetings mit Entwicklern und Kunde</span></li></ul></div></div></div></div><div class="dnav"><button type="button" class="prev" aria-label="Previous">←</button><div class="dots"></div><span class="ct"></span><button type="button" class="next" aria-label="Next">→</button></div></div></details>
+  <details class="try">
+    <summary><span data-l="en">Find a fund that fits. Try the comparison</span><span data-l="de">Passenden Fonds finden. Vergleich testen</span><span class="go"><span data-l="en">Try it</span><span data-l="de">Testen</span></span></summary>
+    <div class="in">
+      <span class="made" data-l="en">Made-up funds</span><span class="made" data-l="de">Erfundene Fonds</span>
+      <div class="filters" style="margin-top:10px">
+        <div class="field"><label for="f-ter"><span data-l="en">Max. costs (TER)</span><span data-l="de">Max. Kosten (TER)</span> <output id="f-ter-o" class="mono">1.00%</output></label><input type="range" id="f-ter" min="30" max="100" value="100"></div>
+        <div class="field"><label for="f-eq"><span data-l="en">Max. equities</span><span data-l="de">Max. Aktienanteil</span> <output id="f-eq-o" class="mono">100%</output></label><input type="range" id="f-eq" min="0" max="100" step="5" value="100"></div>
+      </div>
+      <div class="fundcards" id="fund-list"></div>
+      <div id="compare-box"></div>
+    </div>
+  </details>
+</article>
+
+<!-- ===== 04 ===== -->
+<article class="proj p4" id="p4">
+  <div class="ptop"><span class="pill"><b>04</b> <span data-l="en">Group project · Lealta / Liberty · 2026</span><span data-l="de">Gruppenprojekt · Lealta / Liberty · 2026</span></span><span class="pill users"><span data-l="en">Used by: the forms team</span><span data-l="de">Genutzt von: dem Formular-Team</span></span></div>
+  <h2 data-l="en">One form, <span class="hl">four languages,</span> no mistakes</h2>
+  <h2 data-l="de">Ein Formular, <span class="hl">vier Sprachen,</span> keine Fehler</h2>
+  <div class="pgrid">
+    <div class="story">
+      <div class="beat"><div class="ic"><svg width="22" height="22"><use href="#i-alert"/></svg></div><div><h3>Problem</h3><p data-l="en">Pension forms rebuilt in Pimcore had to match the originals in DE, EN, FR and IT.</p><p data-l="de">In Pimcore neu gebaute Vorsorge-Formulare mussten in DE, EN, FR und IT den Originalen entsprechen.</p></div></div>
+      <div class="beat"><div class="ic"><svg width="22" height="22"><use href="#i-tool"/></svg></div><div><h3 data-l="en">What I did</h3><h3 data-l="de">Was ich tat</h3><p data-l="en">Built forms that generate PDFs, checked every version, trained the team.</p><p data-l="de">Formulare gebaut, die PDFs erzeugen, jede Version geprüft, Team geschult.</p></div></div>
+      <div class="beat"><div class="ic"><svg width="22" height="22"><use href="#i-up"/></svg></div><div><h3 data-l="en">Result</h3><h3 data-l="de">Ergebnis</h3><p data-l="en">10+ form types checked in 4 languages; missing legal text found before release.</p><p data-l="de">Über 10 Formulartypen in 4 Sprachen geprüft; fehlende Rechtstexte vor dem Release gefunden.</p></div></div>
+      <div class="tools"><span>Pimcore</span><span>PDF</span><span>QA</span><span>Training</span></div>
+    </div>
+    <div class="card"><div class="chrome" aria-hidden="true"><i></i><i></i><i></i><span>forms/qa-matrix</span><em><span data-l="en">2026</span><span data-l="de">2026</span></em></div>
+      <div class="langs" role="group" aria-label="Form language" id="formlang"></div>
+      <div class="paper" id="formcard"></div>
+      <div class="checks" aria-label="Checks per language">
+        <span></span><span class="h" data-l="en">Content</span><span class="h" data-l="de">Inhalt</span><span class="h" data-l="en">Legal</span><span class="h" data-l="de">Recht</span><span class="h" data-l="en">Fields</span><span class="h" data-l="de">Felder</span><span class="h" data-l="en">Wording</span><span class="h" data-l="de">Sprache</span>
+        <span class="r">DE</span><span class="ck">✓</span><span class="ck">✓</span><span class="ck">✓</span><span class="ck">✓</span>
+        <span class="r">EN</span><span class="ck">✓</span><span class="ck">✓</span><span class="ck">✓</span><span class="ck">✓</span>
+        <span class="r">FR</span><span class="ck">✓</span><span class="ck">✓</span><span class="ck">✓</span><span class="ck">✓</span>
+        <span class="r">IT</span><span class="ck">✓</span><span class="ck">✓</span><span class="ck">✓</span><span class="ck">✓</span>
+      </div>
+    </div>
+  </div>
+<details class="deckwrap"><summary><span><span data-l="en">The forms, step by step</span><span data-l="de">Die Formulare, Schritt für Schritt</span><small>5 slides</small></span><span class="go"><span data-l="en">Walkthrough</span><span data-l="de">Durchgang</span></span></summary><div class="deck" data-deck="p4"><div class="slides" tabindex="0" aria-label="Slides"><div class="slide on" role="group" aria-roledescription="slide" aria-label="1 / 5"><span class="sn">01 / build</span><h4><span data-l="en">From object to PDF</span><span data-l="de">Vom Objekt zum PDF</span></h4><p data-l="en">Forms are built once in Pimcore and generated as PDFs in four languages.</p><p data-l="de">Formulare werden einmal in Pimcore gebaut und als PDF in vier Sprachen erzeugt.</p><div class="body"><div class="arch"><div class="n"><span data-l="en">Shared modules</span><span data-l="de">Gemeinsame Module</span></div><span class="a">→</span><div class="n hl"><span data-l="en">Form object</span><span data-l="de">Formularobjekt</span><small>Pimcore</small></div><span class="a">→</span><div class="n">DE · EN · FR · IT</div><span class="a">→</span><div class="n hl">PDF</div></div></div></div><div class="slide" role="group" aria-roledescription="slide" aria-label="2 / 5"><span class="sn">02 / QA method</span><h4><span data-l="en">Checked against the original, page by page</span><span data-l="de">Seite für Seite gegen das Original geprüft</span></h4><p data-l="en">10+ form types, each in DE, EN, FR and IT. Rendered pages plus a text comparison, so real defects stand out from layout noise.</p><p data-l="de">Über 10 Formulartypen, jeweils in DE, EN, FR und IT. Gerenderte Seiten plus Textvergleich, damit echte Fehler vom Layout-Rauschen getrennt werden.</p><div class="body"><div class="kpis" style="grid-template-columns:repeat(4,1fr)"><div><b style="font-size:20px"><span data-l="en">Content</span><span data-l="de">Inhalt</span></b></div><div><b style="font-size:20px"><span data-l="en">Legal</span><span data-l="de">Recht</span></b></div><div><b style="font-size:20px"><span data-l="en">Fields</span><span data-l="de">Felder</span></b></div><div><b style="font-size:20px"><span data-l="en">Wording</span><span data-l="de">Sprache</span></b></div></div></div></div><div class="slide" role="group" aria-roledescription="slide" aria-label="3 / 5"><span class="sn">03 / caught before release</span><h4><span data-l="en">What the checks caught before release</span><span data-l="de">Was die Prüfung vor dem Release fand</span></h4><p data-l="en">Findings written as Old → New for the developers, then re-checked after each fix.</p><p data-l="de">Befunde als Alt → Neu für die Entwickler formuliert, nach jeder Korrektur erneut geprüft.</p><div class="body"><div class="fixes"><div><span class="pb"><b><span data-l="en">Missing legal text</span><span data-l="de">Fehlende Rechtstexte</span></b><span data-l="en">Declarations and a wrong purpose statement on a strategy-change form</span><span data-l="de">Erklärungen fehlten, falscher Zweck auf einem Strategiewechsel-Formular</span></span><span class="ar">→</span><span class="fx"><span data-l="en">Caught before release and reported to the developers</span><span data-l="de">Vor dem Release gefunden und den Entwicklern gemeldet</span></span></div><div><span class="pb"><b><span data-l="en">German text in other languages</span><span data-l="de">Deutscher Text in anderen Sprachen</span></b><span data-l="en">Same error in many EN/FR/IT forms</span><span data-l="de">Gleicher Fehler in vielen EN/FR/IT-Formularen</span></span><span class="ar">→</span><span class="fx"><span data-l="en">Traced to one shared module, so it was fixed once at the root</span><span data-l="de">Auf ein gemeinsames Modul zurückgeführt und einmal an der Wurzel behoben</span></span></div><div><span class="pb"><b><span data-l="en">Wrong brand or language</span><span data-l="de">Falsche Marke oder Sprache</span></b><span data-l="en">Content of one foundation in another's forms; wrong-language headers</span><span data-l="de">Inhalte einer Stiftung in Formularen einer anderen; Kopfzeilen in falscher Sprache</span></span><span class="ar">→</span><span class="fx"><span data-l="en">Flagged per form and language; fixes re-checked</span><span data-l="de">Pro Formular und Sprache gemeldet; Korrekturen erneut geprüft</span></span></div><div><span class="pb"><b><span data-l="en">Small but visible errors</span><span data-l="de">Kleine, sichtbare Fehler</span></b><span data-l="en">Wrong dot character in links, stale dates, missing fields</span><span data-l="de">Falsches Punktzeichen in Links, veraltete Daten, fehlende Felder</span></span><span class="ar">→</span><span class="fx"><span data-l="en">Tracked across all forms until resolved or knowingly deferred</span><span data-l="de">Über alle Formulare verfolgt, bis behoben oder bewusst verschoben</span></span></div></div></div></div><div class="slide" role="group" aria-roledescription="slide" aria-label="4 / 5"><span class="sn">04 / who decided what</span><h4><span data-l="en">Who decided what</span><span data-l="de">Wer was entschieden hat</span></h4><div class="body"><div class="who"><div><span class="tag"><span data-l="en">Client</span><span data-l="de">Kunde</span></span><ul><li><span data-l="en">Which forms and content</span><span data-l="de">Welche Formulare und Inhalte</span></li><li><span data-l="en">Intentional changes, e.g. removing a P.O. box</span><span data-l="de">Bewusste Änderungen, z. B. Postfach entfernt</span></li></ul></div><div class="me"><span class="tag"><span data-l="en">Me, with the team</span><span data-l="de">Ich, mit dem Team</span></span><ul><li><span data-l="en">Building forms and partner profiles in Pimcore</span><span data-l="de">Formulare und Partnerprofile in Pimcore aufbauen</span></li><li><span data-l="en">Fixes prioritised with the developers</span><span data-l="de">Korrekturen mit den Entwicklern priorisiert</span></li></ul></div><div class="me"><span class="tag"><span data-l="en">My call</span><span data-l="de">Mein Entscheid</span></span><ul><li><span data-l="en">The QA method and the Old → New format</span><span data-l="de">Die QA-Methode und das Alt → Neu-Format</span></li><li><span data-l="en">No go-ahead until deferred bugs are knowingly accepted</span><span data-l="de">Kein Go, bis verschobene Fehler bewusst akzeptiert sind</span></li><li><span data-l="en">Re-check every fix after each release</span><span data-l="de">Jede Korrektur nach jedem Release erneut prüfen</span></li></ul></div></div></div></div><div class="slide" role="group" aria-roledescription="slide" aria-label="5 / 5"><span class="sn">05 / team</span><h4><span data-l="en">So the team can do it without me</span><span data-l="de">Damit das Team es ohne mich kann</span></h4><div class="body"><ul class="l"><li><span data-l="en">Recurring errors traced back to shared modules</span><span data-l="de">Wiederkehrende Fehler auf gemeinsame Module zurückgeführt</span></li><li><span data-l="en">Trained the team to create forms</span><span data-l="de">Team in der Formularerstellung geschult</span></li><li><span data-l="en">Ongoing guidance and support</span><span data-l="de">Laufende Begleitung und Support</span></li></ul></div></div></div><div class="dnav"><button type="button" class="prev" aria-label="Previous">←</button><div class="dots"></div><span class="ct"></span><button type="button" class="next" aria-label="Next">→</button></div></div></details>
+  </article>
+
+<!-- ===== TEAM & WAY OF WORKING ===== -->
+<section class="sec" id="how">
+  <h2 data-l="en">One team, two countries</h2>
+  <h2 data-l="de">Ein Team, zwei Länder</h2>
+  <div class="team">
+    <div>
+      <div class="people" aria-label="About 30 people in India and 8 in Switzerland">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="ch"></i><i class="ch"></i><i class="ch"></i><i class="ch"></i><i class="ch"></i><i class="ch"></i><i class="ch"></i><i class="ch"></i>
+      </div>
+      <div class="legend"><span><i style="background:var(--acc)"></i><span data-l="en">~30 developers, testers, designers in India</span><span data-l="de">ca. 30 Entwickler, Tester, Designer in Indien</span></span><span><i style="background:#7FA3B8"></i><span data-l="en">8 colleagues in Switzerland</span><span data-l="de">8 Kollegen in der Schweiz</span></span></div>
+    </div>
+    <p style="margin:0;font-size:19px" data-l="en">I'm the bridge: I turn what the client needs into clear tasks for the developers, and explain technical topics back in plain language.</p>
+    <p style="margin:0;font-size:19px" data-l="de">Ich bin die Brücke: Ich übersetze, was der Kunde braucht, in klare Aufgaben für die Entwickler, und erkläre Technisches wieder in einfacher Sprache.</p>
+  </div>
+  <div class="steps">
+    <div><span class="ic"><svg width="22" height="22"><use href="#i-db"/></svg></span><b data-l="en">Understand</b><b data-l="de">Verstehen</b><span data-l="en">the data first</span><span data-l="de">zuerst die Daten</span></div>
+    <div><span class="ic"><svg width="22" height="22"><use href="#i-rule"/></svg></span><b data-l="en">Define</b><b data-l="de">Definieren</b><span data-l="en">clear, testable rules</span><span data-l="de">klare, testbare Regeln</span></div>
+    <div><span class="ic"><svg width="22" height="22"><use href="#i-team"/></svg></span><b data-l="en">Build</b><b data-l="de">Bauen</b><span data-l="en">with the team</span><span data-l="de">mit dem Team</span></div>
+    <div><span class="ic"><svg width="22" height="22"><use href="#i-check"/></svg></span><b data-l="en">Prove</b><b data-l="de">Beweisen</b><span data-l="en">check against the source</span><span data-l="de">gegen die Quelle prüfen</span></div>
+    <div><span class="ic"><svg width="22" height="22"><use href="#i-send"/></svg></span><b data-l="en">Hand over</b><b data-l="de">Übergeben</b><span data-l="en">go live, train users</span><span data-l="de">Go-live, Schulung</span></div>
+  </div>
+</section>
+
+<section class="sec" id="skills">
+  <h2 data-l="en">Skills → where I used them</h2>
+  <h2 data-l="de">Kenntnisse → wo ich sie eingesetzt habe</h2>
+  <div class="skillmap" id="skillmap" role="group" aria-label="Skills"></div>
+  <div class="used" id="used">
+    <div class="u1" data-p="p1">01 · Logista</div>
+    <div class="u2" data-p="p2">02 · <span data-l="en">Statistics</span><span data-l="de">Statistik</span></div>
+    <div class="u3" data-p="p3">03 · Prefex</div>
+    <div class="u4" data-p="p4">04 · <span data-l="en">Forms</span><span data-l="de">Formulare</span></div>
+  </div>
+  <div class="facts">
+    <div><h3 data-l="en">Certifications</h3><h3 data-l="de">Zertifikate</h3><p>IBM IT Project Manager</p><p>CompTIA DataSys+ ce</p><p>Pimcore Consultant · Enterprise Developer</p></div>
+    <div><h3 data-l="en">Languages</h3><h3 data-l="de">Sprachen</h3><p data-l="en">English · native</p><p data-l="de">Englisch · Muttersprache</p><p data-l="en">Afrikaans · native</p><p data-l="de">Afrikaans · Muttersprache</p><p data-l="en">German · B1, in a course now</p><p data-l="de">Deutsch · B1, aktuell im Kurs</p></div>
+    <div><h3 data-l="en">Open to</h3><h3 data-l="de">Offen für</h3><p data-l="en">IT Project Manager</p><p data-l="de">IT-Projektleitung</p><p>Data Analyst</p><p data-l="en">Application / IT Support</p><p data-l="de">Applikationsbetreuung / IT-Support</p></div>
+  </div>
+</section>
+
+<section class="sec" id="experience">
+  <h2 data-l="en">Experience</h2><h2 data-l="de">Erfahrung</h2>
+  <div class="xp">
+    <div><span class="y">2023 – <span data-l="en">today</span><span data-l="de">heute</span></span><span><b data-l="en">IT Project Manager</b><b data-l="de">IT-Projektleiter</b><span class="s">Multi-Concept Group AG, Schwyz</span></span></div>
+    <div><span class="y">2019 – 2022</span><span><b data-l="en">Administrative Assistant</b><b data-l="de">Administrativer Assistent</b><span class="s">Frampton Investments, Windhoek</span></span></div>
+    <div><span class="y">2018</span><span><b data-l="en">IT Analyst Intern</b><b data-l="de">Praktikant IT-Analyse</b><span class="s">Roads Authority of Namibia · Microsoft Dynamics</span></span></div>
+    <div><span class="y">2019</span><span><b data-l="en">Bachelor of Informatics</b><b data-l="de">Bachelor in Informatik</b><span class="s">Namibia University of Science and Technology</span></span></div>
+  </div>
+</section>
+
+<section class="sec" id="cv">
+  <h2 data-l="en">Download my CV</h2><h2 data-l="de">Lebenslauf herunterladen</h2>
+  <div class="dl">
+    <div class="pf"><b data-l="en">This portfolio as PDF</b><b data-l="de">Dieses Portfolio als PDF</b><span class="note" style="margin:0 0 10px;display:block" data-l="en">6 pages, to attach to an application</span><span class="note" style="margin:0 0 10px;display:block" data-l="de">6 Seiten, als Anhang zur Bewerbung</span><a download href="cv/Portfolio-Hafeni-Nghidinwa-EN.pdf">EN</a><a download href="cv/Portfolio-Hafeni-Nghidinwa-DE.pdf">DE</a></div>
+    <div><b data-l="en">IT Project Manager</b><b data-l="de">IT-Projektleiter</b><a download href="cv/CV-Hafeni-Nghidinwa-IT-Project-Manager-EN.pdf">EN</a><a download href="cv/Lebenslauf-Hafeni-Nghidinwa-IT-Projektleiter-DE.pdf">DE</a></div>
+    <div><b>Data Analyst</b><a download href="cv/CV-Hafeni-Nghidinwa-Data-Analyst-EN.pdf">EN</a><a download href="cv/Lebenslauf-Hafeni-Nghidinwa-Data-Analyst-DE.pdf">DE</a></div>
+    <div><b data-l="en">Application Support</b><b data-l="de">Applikationsbetreuung</b><a download href="cv/CV-Hafeni-Nghidinwa-Application-Support-EN.pdf">EN</a><a download href="cv/Lebenslauf-Hafeni-Nghidinwa-Applikationsbetreuung-DE.pdf">DE</a></div>
+    <div><b>IT Support Specialist</b><a download href="cv/CV-Hafeni-Nghidinwa-IT-Support-Specialist-EN.pdf">EN</a><a download href="cv/Lebenslauf-Hafeni-Nghidinwa-IT-Support-Specialist-DE.pdf">DE</a></div>
+  </div>
+    <p class="note" data-l="en">Web versions without address, phone and date of birth. Full version on request.</p>
+  <p class="note" data-l="de">Web-Versionen ohne Adresse, Telefon und Geburtsdatum. Vollständige Version auf Anfrage.</p>
+</section>
+
+<section class="contact" id="contact">
+  <div>
+    <h2 data-l="en">Let's talk.</h2><h2 data-l="de">Lassen Sie uns sprechen.</h2>
+    <p data-l="en">Looking for a role in IT project management, data or application support in Switzerland. Happy to call any time.</p>
+    <p data-l="de">Ich suche eine Stelle in IT-Projektleitung, Daten oder Applikationsbetreuung in der Schweiz. Für ein Gespräch jederzeit bereit.</p>
+  </div>
+  <div class="lines">
+    <div><a href="mailto:hafenihafa@gmail.com">hafenihafa@gmail.com</a><button class="copy" type="button" id="copy-mail">Copy</button></div>
+    <div><a href="https://www.linkedin.com/in/hafeni-nghidinwa-6b2158229">LinkedIn ↗</a></div>
+  </div>
+</section>
+
+<footer>© 2026 Hafeni Nghidinwa · <span data-l="en">Demo data is made up; project figures are real.</span><span data-l="de">Demo-Daten sind erfunden; Projektzahlen sind echt.</span></footer>
+</main>
+
+<script>
+(function(){
+  var root=document.documentElement, L='en', rerender=[];
+  function setLang(l){
+    L=l; root.setAttribute('data-lang',l); root.setAttribute('lang',l);
+    document.getElementById('btn-en').setAttribute('aria-pressed',l==='en');
+    document.getElementById('btn-de').setAttribute('aria-pressed',l==='de');
+    try{localStorage.setItem('lang',l)}catch(e){}
+    rerender.forEach(function(f){f()});
+  }
+  document.getElementById('btn-en').onclick=function(){setLang('en')};
+  document.getElementById('btn-de').onclick=function(){setLang('de')};
+  function el(tag,attrs,html){var e=document.createElement(tag);if(attrs)for(var k in attrs)e.setAttribute(k,attrs[k]);if(html!=null)e.innerHTML=html;return e}
+  function fmt(n){return Math.round(n).toLocaleString(L==='de'?'de-CH':'en-US')}
+  function de(){return L==='de'}
+
+  /* 01 before / after */
+  var ba='after';
+  function renderBA(){
+    var a=ba==='after';
+    document.getElementById('ba-before').setAttribute('aria-pressed',!a);
+    document.getElementById('ba-after').setAttribute('aria-pressed',a);
+    document.getElementById('m-cap').textContent=a?(de()?'1’200+':'1,200+'):'600';
+    document.getElementById('m-time').textContent=a?'−80%':'100%';
+    document.getElementById('m-err').textContent=a?(de()?'<0,5 %':'<0.5%'):(de()?'15 %':'15%');
+    var fc=document.getElementById('f-cap'),ft=document.getElementById('f-time'),fe=document.getElementById('f-err');
+    fc.style.width=(a?100:50)+'%'; ft.style.width=(a?20:100)+'%'; fe.style.width=(a?3:100)+'%';
+    [fc,ft,fe].forEach(function(f){f.classList.toggle('on',a)});
+  }
+  document.getElementById('ba-before').onclick=function(){ba='before';renderBA()};
+  document.getElementById('ba-after').onclick=function(){ba='after';renderBA()};
+  rerender.push(renderBA);
+
+  /* 01 supplier check */
+  var sups=[
+    {n:'Alpenholz AG',vat:'CHE-112.345.678',zip:'8004',st:'Musterstrasse 12',tr:true},
+    {n:'Bergsicht Bau GmbH',vat:'CHE-223.456.789',zip:'6430',st:'Bahnhofweg 3',tr:false},
+    {n:'Seeland Metall AG',vat:'CHE-334.567.890',zip:'2560',st:'Industriering 40',tr:true}
+  ];
+  function norm(s){return (s||'').toLowerCase().replace(/[^a-z0-9]/g,'')}
+  function renderMatch(){
+    var vat=document.getElementById('in-vat').value, zip=document.getElementById('in-zip').value.trim(), st=document.getElementById('in-street').value;
+    var hit=null,how='';
+    sups.forEach(function(s){if(!hit&&norm(s.vat)===norm(vat)){hit=s;how='vat'}});
+    if(!hit)sups.forEach(function(s){if(!hit&&s.zip===zip&&norm(s.st)===norm(st)){hit=s;how='addr'}});
+    var nm=norm(document.getElementById('in-name').value), op='';
+    if(!hit&&nm.length>=4)sups.forEach(function(s){if(hit)return;var c=norm(s.n);
+      if(nm.indexOf(c)===0||c.indexOf(nm)===0){hit=s;how='name';op='starts with'}
+      else if(nm.slice(-c.length)===c){hit=s;how='name';op='ends with'}
+      else if(nm.indexOf(c)>=0||c.indexOf(nm)>=0){hit=s;how='name';op='contains'}
+      else{var w=norm(s.n.split(' ')[0]);if(w.length>=5&&nm.indexOf(w)>=0){hit=s;how='name';op='contains'}}});
+    var r=document.getElementById('match-result');
+    if(!hit){r.className='result bad';r.innerHTML='<strong>'+(de()?'✗ Unbekannt → manuelle Prüfung':'✗ Unknown → manual review')+'</strong>'+(de()?'Weder MWST-Nummer, Adresse noch Name passen.':'Neither the VAT number, the address nor the name matches.');return}
+    var by=how==='vat'?(de()?'über MWST-Nummer':'by VAT number'):how==='addr'?(de()?'über PLZ + Strasse':'by postcode + street'):(de()?'über Namensabgleich im CRM («'+op+'»)':'by name check against the CRM ("'+op+'")');
+    r.className='result '+(hit.tr?'ok':'warn');
+    r.innerHTML='<strong>✓ '+hit.n+' <span style="font-weight:400">('+by+')</span></strong>'+(hit.tr?(de()?'Vertrauenswürdig → läuft direkt ins ERP, ohne manuelle Prüfung.':'Trusted → goes straight to the ERP, no manual review.'):(de()?'Erkannt, aber nicht vertrauenswürdig → kurze Prüfung durch das Team.':'Found, but not trusted → a quick check by the team.'));
+  }
+  ['in-vat','in-zip','in-street','in-name'].forEach(function(id){document.getElementById(id).addEventListener('input',renderMatch)});
+  rerender.push(renderMatch);
+
+  /* 02 confidentiality */
+  var cos=[{n:'A',v:42},{n:'B',v:25},{n:'C',v:20},{n:'D',v:13}];
+  function buildCos(){
+    var c=document.getElementById('cos'); c.innerHTML='';
+    cos.forEach(function(co,i){
+      var row=el('div',{'class':'co'});
+      row.innerHTML='<span class="av">'+co.n+'</span><input type="range" min="0" max="100" value="'+co.v+'" aria-label="'+(de()?'Firma ':'Company ')+co.n+'"><span class="pct" id="co-p-'+i+'"></span>';
+      row.querySelector('input').addEventListener('input',function(e){co.v=+e.target.value;calc()});
+      c.appendChild(row);
+    });
+    calc();
+  }
+  function calc(){
+    var tot=cos.reduce(function(a,c){return a+c.v},0), rep=cos.map(function(c){return c.v}).filter(function(v){return v>0}).sort(function(a,b){return b-a});
+    cos.forEach(function(c,i){document.getElementById('co-p-'+i).textContent=tot?Math.round(c.v/tot*100)+'%':'–'});
+    var s1=tot?rep[0]/tot*100:0, s2=tot?(rep[0]+(rep[1]||0))/tot*100:0, why='';
+    if(rep.length<3)why=de()?'Weniger als 3 Firmen melden → ausgeblendet.':'Fewer than 3 companies report → hidden.';
+    else if(s1>70)why=de()?'Eine Firma hat über 70 % → sie wäre erkennbar.':'One company holds over 70% → it could be identified.';
+    else if(s2>80)why=de()?'Die zwei grössten haben über 80 % → ausgeblendet.':'The two largest hold over 80% → hidden.';
+    var ok=!why&&tot>0;
+    document.getElementById('cell-val').textContent=ok?fmt(tot*100)+' t':'*';
+    document.getElementById('cell-why').textContent=ok?(de()?'Sicher → wird veröffentlicht.':'Safe → published.'):why;
+  }
+  rerender.push(buildCos);
+
+  /* 02 plausibility */
+  function renderPl(){
+    var raw=document.getElementById('pl-in').value.replace(/[’',\s]/g,''), prev=12400, r=document.getElementById('pl-result');
+    if(!/^\d+(\.\d+)?$/.test(raw)){r.className='result bad';r.innerHTML='<strong>'+(de()?'✗ Formatfehler':'✗ Format error')+'</strong>'+(de()?'Nur Zahlen. Absenden gesperrt.':'Numbers only. Submit is blocked.');return}
+    var d=(+raw-prev)/prev*100, ds=(d>0?'+':'')+Math.round(d)+'%';
+    if(Math.abs(d)<=15){r.className='result ok';r.innerHTML='<strong>✓ '+(de()?'Angenommen':'Accepted')+' ('+ds+')</strong>'+(de()?'Normale Veränderung zum Vormonat.':'A normal change from last month.')}
+    else{r.className='result warn';r.innerHTML='<strong>! '+(de()?'Ungewöhnlich':'Unusual')+' ('+ds+')</strong>'+(de()?'Nur mit Kommentar möglich; das Team wird informiert.':'Needs a comment; the team is notified.')}
+  }
+  document.getElementById('pl-in').addEventListener('input',renderPl);
+  rerender.push(renderPl);
+
+  /* 03 funds */
+  var funds=[
+    {n:'Alpine BVG 25',t:{en:'Strategy fund',de:'Strategiefonds'},ter:0.62,eq:25,p:3.1},
+    {n:'Alpine BVG 45',t:{en:'Strategy fund',de:'Strategiefonds'},ter:0.68,eq:45,p:5.4},
+    {n:'Helvetia Index Equity',t:{en:'Investment fund',de:'Anlagefonds'},ter:0.35,eq:100,p:8.2},
+    {n:'Swiss Bond Core',t:{en:'Investment fund',de:'Anlagefonds'},ter:0.41,eq:0,p:1.2},
+    {n:'Matterhorn Balanced',t:{en:'Asset mgmt mandate',de:'Vermögensverwaltung'},ter:0.95,eq:40,p:4.6},
+    {n:'Lakeside Growth',t:{en:'Asset mgmt mandate',de:'Vermögensverwaltung'},ter:0.88,eq:70,p:6.9}
+  ];
+  var picked=['Alpine BVG 25','Lakeside Growth'];
+  function pc(n,d){var s=n.toFixed(d);return (de()?s.replace('.',','):s)+'%'}
+  function renderFunds(){
+    var ter=+document.getElementById('f-ter').value/100, eq=+document.getElementById('f-eq').value;
+    document.getElementById('f-ter-o').textContent=pc(ter,2); document.getElementById('f-eq-o').textContent=eq+'%';
+    var box=document.getElementById('fund-list'); box.innerHTML='';
+    var list=funds.filter(function(f){return f.ter<=ter+1e-9&&f.eq<=eq});
+    if(!list.length)box.innerHTML='<div class="result">'+(de()?'Kein Fonds passt. Lockern Sie die Filter.':'No fund fits. Loosen the filters.')+'</div>';
+    list.forEach(function(f){
+      var on=picked.indexOf(f.n)>=0, row=el('div',{'class':'fc'});
+      row.innerHTML='<div><b>'+f.n+'</b><small>'+f.t[L]+' · TER '+pc(f.ter,2)+' · '+(de()?'Aktien ':'Equities ')+f.eq+'%</small></div>';
+      var b=el('button',{type:'button','class':'cmpbtn','aria-pressed':on},on?'✓':(de()?'+ Vergleich':'+ Compare'));
+      b.onclick=function(){var i=picked.indexOf(f.n);if(i>=0)picked.splice(i,1);else{if(picked.length>=3)picked.shift();picked.push(f.n)}renderFunds()};
+      row.appendChild(b); box.appendChild(row);
+    });
+    var cb=document.getElementById('compare-box');
+    if(!picked.length){cb.innerHTML='';return}
+    var maxp=Math.max.apply(null,funds.map(function(f){return f.p}));
+    cb.innerHTML='<div class="compare">'+picked.map(function(n){var f=funds.filter(function(x){return x.n===n})[0];return '<div class="c"><b>'+f.n+'</b><div class="k"><span>TER</span><span>'+pc(f.ter,2)+'</span></div><div class="k"><span>'+(de()?'Aktien':'Equities')+'</span><span>'+f.eq+'%</span></div><div class="k"><span>'+(de()?'Perf. 1J':'1Y perf.')+'</span><span>+'+pc(f.p,1)+'</span></div><div class="track"><div class="fill on" style="width:'+(f.p/maxp*100)+'%"></div></div></div>'}).join('')+'</div>';
+  }
+  ['f-ter','f-eq'].forEach(function(id){document.getElementById(id).addEventListener('input',renderFunds)});
+  rerender.push(renderFunds);
+
+  /* 04 form languages */
+  var fl='fr';
+  var F={
+    de:{t:'Antrag Strategiewechsel',f:[['Name der versicherten Person','Anna Muster'],['Gewünschte Strategie','Ausgewogen'],['Ort, Datum','Zürich, 01.12.2026']]},
+    en:{t:'Change of investment strategy',f:[['Name of the insured person','Anna Muster'],['Requested strategy','Balanced'],['Place, date','Zurich, 01.12.2026']]},
+    fr:{t:'Changement de stratégie',f:[['Nom de la personne assurée','Anna Muster'],['Stratégie souhaitée','Équilibrée'],['Lieu, date','Zurich, 01.12.2026']]},
+    it:{t:'Cambio di strategia',f:[['Nome della persona assicurata','Anna Muster'],['Strategia desiderata','Bilanciata'],['Luogo, data','Zurigo, 01.12.2026']]}
+  };
+  function renderForm(){
+    var s=document.getElementById('formlang'); s.innerHTML='';
+    ['de','en','fr','it'].forEach(function(k){var b=el('button',{type:'button','aria-pressed':k===fl},k.toUpperCase());b.onclick=function(){fl=k;renderForm()};s.appendChild(b)});
+    var d=F[fl];
+    document.getElementById('formcard').innerHTML='<div class="ttl">'+d.t+'</div>'+d.f.map(function(x){return '<div class="fl">'+x[0]+'</div><div class="fv">'+x[1]+'</div>'}).join('');
+  }
+  rerender.push(renderForm);
+
+  /* skills */
+  var skills=[
+    {n:'Project management',d:'Projektmanagement',p:['p1','p2','p3','p4']},
+    {n:'Rulesets',d:'Regelwerke',p:['p1','p2']},
+    {n:'Data migration',d:'Datenmigration',p:['p1','p2']},
+    {n:'Data quality',d:'Datenqualität',p:['p1','p2','p4']},
+    {n:'SQL',d:'SQL',p:['p2']},
+    {n:'Pimcore',d:'Pimcore',p:['p2','p3','p4']},
+    {n:'Zoho CRM',d:'Zoho CRM',p:['p1']},
+    {n:'APIs',d:'APIs',p:['p1','p3']},
+    {n:'Releases',d:'Releases',p:['p1','p3']},
+    {n:'Testing & QA',d:'Tests & QA',p:['p1','p2','p4']},
+    {n:'Training',d:'Schulung',p:['p2','p4']}
+  ];
+  var sk=0;
+  function renderSkills(){
+    var c=document.getElementById('skillmap'); c.innerHTML='';
+    skills.forEach(function(s,i){var b=el('button',{type:'button','aria-pressed':i===sk},de()?s.d:s.n);b.onclick=function(){sk=i;renderSkills()};c.appendChild(b)});
+    document.querySelectorAll('#used div').forEach(function(d){d.classList.toggle('on',skills[sk].p.indexOf(d.getAttribute('data-p'))>=0)});
+  }
+  rerender.push(renderSkills);
+
+  var cbtn=document.getElementById('copy-mail');
+  cbtn.addEventListener('click',function(){
+    if(!navigator.clipboard){cbtn.textContent='hafenihafa@gmail.com';return}
+    navigator.clipboard.writeText('hafenihafa@gmail.com').then(function(){cbtn.textContent=de()?'Kopiert':'Copied'},function(){cbtn.textContent='hafenihafa@gmail.com'});
+  });
+
+
+  /* decks */
+  document.querySelectorAll('.deck').forEach(function(dk){
+    var sl=[].slice.call(dk.querySelectorAll('.slide')), i=0, dots=dk.querySelector('.dots'), ct=dk.querySelector('.ct'), pv=dk.querySelector('.prev'), nx=dk.querySelector('.next');
+    sl.forEach(function(_,k){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Slide '+(k+1));b.onclick=function(){go(k)};dots.appendChild(b)});
+    function go(k){i=Math.max(0,Math.min(sl.length-1,k));sl.forEach(function(s,n){s.classList.toggle('on',n===i)});[].forEach.call(dots.children,function(b,n){b.setAttribute('aria-current',n===i)});ct.textContent=(i+1)+' / '+sl.length;pv.disabled=i===0;nx.disabled=i===sl.length-1}
+    pv.onclick=function(){go(i-1)}; nx.onclick=function(){go(i+1)};
+    var box=dk.querySelector('.slides');
+    box.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){go(i+1);e.preventDefault()}if(e.key==='ArrowLeft'){go(i-1);e.preventDefault()}});
+    var x0=null; box.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+    box.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40)go(i+(dx<0?1:-1));x0=null});
+    go(0);
+  });
+  var saved=null; try{saved=localStorage.getItem('lang')}catch(e){}
+  setLang(saved==='de'?'de':'en');
+})();
+</script>
+</body>
+</html>
