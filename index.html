@@ -505,9 +505,132 @@ details.deckwrap summary small{color:var(--muted)}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn.primary,:root:not([data-theme="light"]) .lang button[aria-pressed="true"],:root:not([data-theme="light"]) .skillmap button[aria-pressed="true"],:root:not([data-theme="light"]) .seg button[aria-pressed="true"],:root:not([data-theme="light"]) .langs button[aria-pressed="true"],:root:not([data-theme="light"]) .cmpbtn[aria-pressed="true"],:root:not([data-theme="light"]) .go{color:#0D1320!important}}
 :root[data-theme="dark"] .btn.primary,:root[data-theme="dark"] .lang button[aria-pressed="true"],:root[data-theme="dark"] .skillmap button[aria-pressed="true"],:root[data-theme="dark"] .seg button[aria-pressed="true"],:root[data-theme="dark"] .langs button[aria-pressed="true"],:root[data-theme="dark"] .cmpbtn[aria-pressed="true"],:root[data-theme="dark"] .go{color:#0D1320!important}
 .dl .pf{grid-column:1/-1;background:var(--tint)}
+
+/* ===== app shell (v14) ===== */
+html{scroll-behavior:auto}
+body.appmode{overflow:hidden}
+.app{display:grid;grid-template-columns:268px minmax(0,1fr);height:100vh;height:100dvh}
+.side{display:flex;flex-direction:column;gap:var(--s4);padding:var(--s4) var(--s3);border-right:1px solid var(--line);background:var(--surface);overflow:auto;min-height:0}
+.me-card{display:flex;gap:12px;align-items:center;padding:0 var(--s1)}
+.me-card img{width:64px;height:64px;border-radius:50%;object-fit:cover;flex:0 0 auto}
+.me-card .nm{display:block;font-family:var(--font-display);font-size:17px;line-height:1.2}
+.me-card .rl{display:block;font-size:13.5px;color:var(--muted)}
+.me-card .av{display:inline-flex;gap:6px;align-items:center;font:500 11.5px var(--font-mono);margin-top:4px}
+.me-card .av i{width:7px;height:7px;border-radius:50%;background:var(--ok)}
+.vnav{display:grid;gap:2px}
+.vnav a{display:grid;grid-template-columns:30px 1fr;align-items:center;gap:6px;padding:9px 10px;border-radius:10px;text-decoration:none;font-size:15px;color:var(--muted)}
+.vnav a b{font:500 12px var(--font-mono);color:var(--muted)}
+.vnav a:hover{background:var(--paper);color:var(--ink)}
+.vnav a[aria-current="page"]{background:var(--tint);color:var(--ink);font-weight:600}
+.vnav a[aria-current="page"] b{color:var(--acc)}
+.side-foot{margin-top:auto;display:grid;gap:8px;padding:0 var(--s1)}
+.side-foot .lang{margin:0 0 6px;justify-self:start}
+.side-foot .sl{font-size:13.5px;color:var(--muted);text-decoration:none;overflow-wrap:anywhere}
+.side-foot .sl:hover{color:var(--acc)}
+.btn.sm{padding:9px 16px;font-size:14px;justify-content:center;margin-top:6px}
+.main{overflow:auto;min-height:0;min-width:0;scroll-behavior:smooth}
+.crumb{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px var(--s5);background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);font-size:13px;color:var(--muted)}
+.crumb b{color:var(--ink);font-weight:500}
+.crumb .step{display:inline-flex;gap:8px;align-items:center}
+.crumb button{width:30px;height:30px;border-radius:8px;border:1px solid var(--line);background:var(--surface);cursor:pointer}
+.crumb button:hover{border-color:var(--acc);color:var(--acc)}
+.crumb button:disabled{opacity:.35;cursor:default}
+.view{display:none;padding:var(--s4) var(--s5) var(--s6);max-width:1180px;margin:0 auto;outline:none}
+.view.on{display:block}
+@media (prefers-reduced-motion:no-preference){.view.on{animation:vin .25s ease-out}@keyframes vin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}}
+.view .proj{margin-bottom:0;scroll-margin-top:0}
+.view .sec{padding-top:0;margin-top:0}
+/* overview fits one screen */
+.view.ov .hero{grid-template-columns:minmax(0,1fr);padding:var(--s3) 0 var(--s4)}
+.view.ov .hero .photo{display:none}
+.view.ov .hero h1{font-size:clamp(36px,4.6vw,62px)}
+.ovtop{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:var(--s5);align-items:center}
+.ovtop .term{margin:0}
+.view.ov .stats{margin:var(--s4) 0 0}
+/* project tabs */
+.ptabs{display:flex;gap:6px;flex-wrap:wrap;margin:var(--s3) 0 0}
+.ptabs button{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 16px;font-weight:600;font-size:14px;cursor:pointer;color:var(--muted)}
+.ptabs button[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.ptabs button .mono{font-size:11.5px;opacity:.75;margin-left:6px}
+.proj[data-tab] .pgrid,.proj[data-tab] details{display:none}
+.proj[data-tab="sum"] .pgrid{display:grid}
+.proj[data-tab="deck"] details.deckwrap{display:block;margin-top:var(--s3)}
+.proj[data-tab="deck"] details.deckwrap>summary{display:none}
+.proj[data-tab="try"] details.try{display:block;margin-top:var(--s3)}
+.proj[data-tab="try"] details.try>summary{cursor:default}
+.proj[data-tab="try"] details.try>summary .go{display:none}
+.pnext{display:flex;justify-content:space-between;gap:12px;margin-top:var(--s4);font-size:14.5px}
+.pnext a{text-decoration:none;font-weight:600;color:var(--muted)}
+.pnext a:hover{color:var(--acc)}
+/* skills + experience side by side */
+.view.two{display:none}
+.view.two.on{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:var(--s5);align-items:start}
+.view.two .sec{margin:0}
+/* cv + contact side by side */
+.view#v-cv.on{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:var(--s5);align-items:start}
+.view#v-cv footer{grid-column:1/-1}
+.view#v-cv .contact{margin:0}
+@media (max-width:1180px){
+  .view.two.on,.view#v-cv.on{grid-template-columns:minmax(0,1fr)}
+  .ovtop{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:899px){
+  body.appmode{overflow:auto}
+  .app{display:block;height:auto}
+  .side{position:sticky;top:0;z-index:20;flex-direction:row;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:10px 16px;border-right:0;border-bottom:1px solid var(--line);overflow:visible}
+  .me-card{padding:0;flex:1 1 auto;min-width:0}
+  .me-card img{width:36px;height:36px}
+  .me-card .rl,.me-card .av{display:none}
+  .me-card .nm{font-size:15px}
+  .side-foot{margin:0;display:block;padding:0}
+  .side-foot .sl,.side-foot .btn{display:none}
+  .side-foot .lang{margin:0}
+  .vnav{order:3;flex:1 0 100%;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:0 16px}
+  .vnav::-webkit-scrollbar{display:none}
+  .vnav a{flex:0 0 auto;display:flex;gap:6px;padding:7px 12px;font-size:14px;border:1px solid var(--line);border-radius:999px}
+  .main{overflow:visible}
+  .crumb{display:none}
+  .view{padding:var(--s3) 16px var(--s5)}
+}
+
+/* fixed-height app views on desktop: content scrolls inside its own panel */
+.view .proj{padding:var(--s4) var(--s5)}
+.view .proj h2{font-size:clamp(26px,3vw,40px)}
+.view .ptop{margin-bottom:var(--s2)}
+.view.ov .hero h1{font-size:clamp(32px,min(4.6vw,7.2vh),62px)}
+.view.ov .stat{padding:var(--s3)}
+.pbody{margin-top:var(--s3)}
+.pbody .pgrid{margin-top:0}
+.proj[data-tab="deck"] .pbody details.deckwrap,.proj[data-tab="try"] .pbody details.try:first-child{margin-top:0}
+
+.view .story{align-content:start}
+.view .sec h2{font-size:clamp(26px,3vw,38px);margin-bottom:var(--s3)}
+.view.two .xp>div{padding-top:var(--s2);padding-bottom:var(--s2)}
+.proj[data-tab="deck"] .slide{justify-content:flex-start}
+
+.view#v-cv .contact{grid-template-columns:minmax(0,1fr);gap:var(--s3);padding:var(--s5)}
+.view#v-cv .contact h2{font-size:clamp(32px,3.4vw,44px);line-height:1.05}
+.view#v-cv footer{margin-top:var(--s3)}
+@media (min-width:900px) and (min-height:560px){
+  .main{display:flex;flex-direction:column;overflow:hidden}
+  .crumb{flex:none}
+  .view.on{flex:1;min-height:0;overflow:auto;width:100%}
+  .view.pv.on{display:flex;flex-direction:column;overflow:hidden;padding-bottom:var(--s3)}
+  .view.pv .proj{flex:1;min-height:0;display:flex;flex-direction:column}
+  .view.pv .pnext{flex:none;margin-top:var(--s2)}
+  .pbody{flex:1;min-height:0;overflow:auto;scrollbar-gutter:stable}
+  .proj[data-tab="deck"] .pbody{overflow:hidden;display:flex;flex-direction:column}
+  .proj[data-tab="deck"] details.deckwrap{flex:1;min-height:0;display:flex!important;flex-direction:column}
+  .proj[data-tab="deck"] .deck{flex:1;min-height:0;display:flex;flex-direction:column;padding-top:var(--s3)}
+  .proj[data-tab="deck"] .slides{flex:1;min-height:0;overflow:auto}
+  .proj[data-tab="deck"] .slide{padding:var(--s4)}
+  .proj[data-tab="deck"] .dnav{flex:none}
+}
+@media (max-width:899px){.view .proj{padding:var(--s4) var(--s3)}.view .proj h2{font-size:clamp(26px,7vw,34px)}}
+@media print{.side,.crumb,.ptabs,.pnext{display:none!important}.app{display:block;height:auto}.view{display:block!important}body.appmode{overflow:visible}}
 </style>
 </head>
-<body>
+<body class="appmode">
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
@@ -533,26 +656,40 @@ details.deckwrap summary small{color:var(--muted)}
   </defs>
 </svg>
 
-<header class="bar">
-  <div class="wrap">
-    <a class="logo" href="#top">Hafeni<span>.</span></a>
-    <nav aria-label="Sections">
-      <div class="dot-nav">
-        <a href="#p1" style="background:var(--ink)" aria-label="Project 1">01</a>
-        <a href="#p2" style="background:var(--ink)" aria-label="Project 2">02</a>
-        <a href="#p3" style="background:var(--ink)" aria-label="Project 3">03</a>
-        <a href="#p4" style="background:var(--ink)" aria-label="Project 4">04</a>
-      </div>
-      <span class="lang" role="group" aria-label="Language">
-        <button type="button" id="btn-en" aria-pressed="true">EN</button>
-        <button type="button" id="btn-de" aria-pressed="false">DE</button>
-      </span>
-    </nav>
+<div class="app">
+<aside class="side" aria-label="Profile and navigation">
+  <div class="me-card">
+    <img src="photo.jpg" alt="Hafeni Nghidinwa" width="64" height="64">
+    <div><b class="nm">Hafeni Nghidinwa</b><span class="rl"><span data-l="en">IT Project Manager</span><span data-l="de">IT-Projektleiter</span></span>
+    <span class="av"><i></i><span data-l="en">Available now</span><span data-l="de">Sofort verfügbar</span></span></div>
   </div>
-</header>
-
-<main class="wrap" id="top">
-
+  <nav class="vnav" aria-label="Sections">
+      <a href="#overview" data-v="overview"><b>~</b><span class="t"><span data-l="en">Overview</span><span data-l="de">Überblick</span></span></a>
+      <a href="#p1" data-v="p1"><b>01</b><span class="t">Logista</span></a>
+      <a href="#p2" data-v="p2"><b>02</b><span class="t"><span data-l="en">Statistics migration</span><span data-l="de">Statistik-Migration</span></span></a>
+      <a href="#p3" data-v="p3"><b>03</b><span class="t">Prefex</span></a>
+      <a href="#p4" data-v="p4"><b>04</b><span class="t"><span data-l="en">Pension forms</span><span data-l="de">Vorsorge-Formulare</span></span></a>
+      <a href="#how" data-v="how"><b>05</b><span class="t"><span data-l="en">How I work</span><span data-l="de">Wie ich arbeite</span></span></a>
+      <a href="#about" data-v="about"><b>06</b><span class="t"><span data-l="en">Skills &amp; experience</span><span data-l="de">Kenntnisse &amp; Erfahrung</span></span></a>
+      <a href="#cv" data-v="cv"><b>07</b><span class="t"><span data-l="en">CV &amp; contact</span><span data-l="de">Lebenslauf &amp; Kontakt</span></span></a>
+  </nav>
+  <div class="side-foot">
+    <span class="lang" role="group" aria-label="Language">
+      <button type="button" id="btn-en" aria-pressed="true">EN</button>
+      <button type="button" id="btn-de" aria-pressed="false">DE</button>
+    </span>
+    <a class="sl" href="mailto:hafenihafa@gmail.com">hafenihafa@gmail.com</a>
+    <a class="sl" href="https://www.linkedin.com/in/hafeni-nghidinwa-6b2158229">LinkedIn ↗</a>
+    <a class="btn primary sm" href="#cv"><span data-l="en">Download CV</span><span data-l="de">Lebenslauf</span></a>
+  </div>
+</aside>
+<main class="main" id="top">
+<div class="crumb" aria-hidden="false">
+  <span class="path mono">~/hafeni/<b id="crumb-path">overview</b></span>
+  <span class="step"><span class="mono" id="crumb-n">1 / 8</span>
+  <button type="button" id="v-prev" aria-label="Previous section">←</button><button type="button" id="v-next" aria-label="Next section">→</button></span>
+</div>
+<section class="view ov" id="v-overview" data-view="overview" tabindex="-1">
 <div class="hero">
   <div>
     <p class="hello"><span data-l="en">Hi, I'm Hafeni · IT Project Manager in Switzerland</span><span data-l="de">Hallo, ich bin Hafeni · IT-Projektleiter in der Schweiz</span></p>
@@ -561,7 +698,7 @@ details.deckwrap summary small{color:var(--muted)}
     <p class="sub" data-l="en">Data platforms, migrations and automation, delivered with teams in Switzerland and India.</p>
     <p class="sub" data-l="de">Datenplattformen, Migrationen und Automatisierung, umgesetzt mit Teams in der Schweiz und in Indien.</p>
     <div class="btns">
-      <a class="btn primary" href="#p1"><span data-l="en">See my projects ↓</span><span data-l="de">Meine Projekte ↓</span></a>
+      <a class="btn primary" href="#p1"><span data-l="en">See my projects →</span><span data-l="de">Meine Projekte →</span></a>
       <a class="btn" href="#cv"><span data-l="en">Download CV</span><span data-l="de">Lebenslauf</span></a>
     </div>
   </div>
@@ -591,6 +728,9 @@ details.deckwrap summary small{color:var(--muted)}
 </div>
 
 <!-- ===== 01 ===== -->
+</section>
+
+<section class="view" id="v-p1" data-view="p1" tabindex="-1">
 <article class="proj p1" id="p1">
   <div class="ptop"><span class="pill"><b>01</b> <span data-l="en">Client project · Logista · 2023–today</span><span data-l="de">Kundenprojekt · Logista · 2023–heute</span></span><span class="pill users"><span data-l="en">Used by: invoice processing team and client staff</span><span data-l="de">Genutzt von: Rechnungsteam und Mitarbeitende des Kunden</span></span></div>
   <h2 data-l="en">Invoices that <span class="hl">process themselves</span></h2>
@@ -651,8 +791,11 @@ details.deckwrap summary small{color:var(--muted)}
   </details>
   
 </article>
+</section>
+
 
 <!-- ===== 02 ===== -->
+<section class="view" id="v-p2" data-view="p2" tabindex="-1">
 <article class="proj p2" id="p2">
   <div class="ptop"><span class="pill"><b>02</b> <span data-l="en">Client project · Swiss association management firm · 2026</span><span data-l="de">Kundenprojekt · Schweizer Verbandsmanagement-Firma · 2026</span></span><span class="pill users"><span data-l="en">Used by: ~300 member companies and the firm's admins</span><span data-l="de">Genutzt von: ca. 300 Mitgliedsfirmen und den Admins der Firma</span></span></div>
   <h2 data-l="en">Years of statistics, moved with <span class="hl">zero differences</span></h2>
@@ -708,8 +851,11 @@ details.deckwrap summary small{color:var(--muted)}
     </div>
   </details>
 </article>
+</section>
+
 
 <!-- ===== 03 ===== -->
+<section class="view" id="v-p3" data-view="p3" tabindex="-1">
 <article class="proj p3" id="p3">
   <div class="ptop"><span class="pill"><b>03</b> <span data-l="en">Group project · prefex.ch · 2025</span><span data-l="de">Gruppenprojekt · prefex.ch · 2025</span></span><span class="pill users"><span data-l="en">Used by: the public and partner companies</span><span data-l="de">Genutzt von: Öffentlichkeit und Partnerfirmen</span></span></div>
   <h2 data-l="en">Pension funds, <span class="hl">compared in one place</span></h2>
@@ -751,8 +897,11 @@ details.deckwrap summary small{color:var(--muted)}
     </div>
   </details>
 </article>
+</section>
+
 
 <!-- ===== 04 ===== -->
+<section class="view" id="v-p4" data-view="p4" tabindex="-1">
 <article class="proj p4" id="p4">
   <div class="ptop"><span class="pill"><b>04</b> <span data-l="en">Group project · Lealta / Liberty · 2026</span><span data-l="de">Gruppenprojekt · Lealta / Liberty · 2026</span></span><span class="pill users"><span data-l="en">Used by: the forms team</span><span data-l="de">Genutzt von: dem Formular-Team</span></span></div>
   <h2 data-l="en">One form, <span class="hl">four languages,</span> no mistakes</h2>
@@ -778,8 +927,11 @@ details.deckwrap summary small{color:var(--muted)}
   </div>
 <details class="deckwrap"><summary><span><span data-l="en">The forms, step by step</span><span data-l="de">Die Formulare, Schritt für Schritt</span><small>5 slides</small></span><span class="go"><span data-l="en">Walkthrough</span><span data-l="de">Durchgang</span></span></summary><div class="deck" data-deck="p4"><div class="slides" tabindex="0" aria-label="Slides"><div class="slide on" role="group" aria-roledescription="slide" aria-label="1 / 5"><span class="sn">01 / build</span><h4><span data-l="en">From object to PDF</span><span data-l="de">Vom Objekt zum PDF</span></h4><p data-l="en">Forms are built once in Pimcore and generated as PDFs in four languages.</p><p data-l="de">Formulare werden einmal in Pimcore gebaut und als PDF in vier Sprachen erzeugt.</p><div class="body"><div class="arch"><div class="n"><span data-l="en">Shared modules</span><span data-l="de">Gemeinsame Module</span></div><span class="a">→</span><div class="n hl"><span data-l="en">Form object</span><span data-l="de">Formularobjekt</span><small>Pimcore</small></div><span class="a">→</span><div class="n">DE · EN · FR · IT</div><span class="a">→</span><div class="n hl">PDF</div></div></div></div><div class="slide" role="group" aria-roledescription="slide" aria-label="2 / 5"><span class="sn">02 / QA method</span><h4><span data-l="en">Checked against the original, page by page</span><span data-l="de">Seite für Seite gegen das Original geprüft</span></h4><p data-l="en">10+ form types, each in DE, EN, FR and IT. Rendered pages plus a text comparison, so real defects stand out from layout noise.</p><p data-l="de">Über 10 Formulartypen, jeweils in DE, EN, FR und IT. Gerenderte Seiten plus Textvergleich, damit echte Fehler vom Layout-Rauschen getrennt werden.</p><div class="body"><div class="kpis" style="grid-template-columns:repeat(4,1fr)"><div><b style="font-size:20px"><span data-l="en">Content</span><span data-l="de">Inhalt</span></b></div><div><b style="font-size:20px"><span data-l="en">Legal</span><span data-l="de">Recht</span></b></div><div><b style="font-size:20px"><span data-l="en">Fields</span><span data-l="de">Felder</span></b></div><div><b style="font-size:20px"><span data-l="en">Wording</span><span data-l="de">Sprache</span></b></div></div></div></div><div class="slide" role="group" aria-roledescription="slide" aria-label="3 / 5"><span class="sn">03 / caught before release</span><h4><span data-l="en">What the checks caught before release</span><span data-l="de">Was die Prüfung vor dem Release fand</span></h4><p data-l="en">Findings written as Old → New for the developers, then re-checked after each fix.</p><p data-l="de">Befunde als Alt → Neu für die Entwickler formuliert, nach jeder Korrektur erneut geprüft.</p><div class="body"><div class="fixes"><div><span class="pb"><b><span data-l="en">Missing legal text</span><span data-l="de">Fehlende Rechtstexte</span></b><span data-l="en">Declarations and a wrong purpose statement on a strategy-change form</span><span data-l="de">Erklärungen fehlten, falscher Zweck auf einem Strategiewechsel-Formular</span></span><span class="ar">→</span><span class="fx"><span data-l="en">Caught before release and reported to the developers</span><span data-l="de">Vor dem Release gefunden und den Entwicklern gemeldet</span></span></div><div><span class="pb"><b><span data-l="en">German text in other languages</span><span data-l="de">Deutscher Text in anderen Sprachen</span></b><span data-l="en">Same error in many EN/FR/IT forms</span><span data-l="de">Gleicher Fehler in vielen EN/FR/IT-Formularen</span></span><span class="ar">→</span><span class="fx"><span data-l="en">Traced to one shared module, so it was fixed once at the root</span><span data-l="de">Auf ein gemeinsames Modul zurückgeführt und einmal an der Wurzel behoben</span></span></div><div><span class="pb"><b><span data-l="en">Wrong brand or language</span><span data-l="de">Falsche Marke oder Sprache</span></b><span data-l="en">Content of one foundation in another's forms; wrong-language headers</span><span data-l="de">Inhalte einer Stiftung in Formularen einer anderen; Kopfzeilen in falscher Sprache</span></span><span class="ar">→</span><span class="fx"><span data-l="en">Flagged per form and language; fixes re-checked</span><span data-l="de">Pro Formular und Sprache gemeldet; Korrekturen erneut geprüft</span></span></div><div><span class="pb"><b><span data-l="en">Small but visible errors</span><span data-l="de">Kleine, sichtbare Fehler</span></b><span data-l="en">Wrong dot character in links, stale dates, missing fields</span><span data-l="de">Falsches Punktzeichen in Links, veraltete Daten, fehlende Felder</span></span><span class="ar">→</span><span class="fx"><span data-l="en">Tracked across all forms until resolved or knowingly deferred</span><span data-l="de">Über alle Formulare verfolgt, bis behoben oder bewusst verschoben</span></span></div></div></div></div><div class="slide" role="group" aria-roledescription="slide" aria-label="4 / 5"><span class="sn">04 / who decided what</span><h4><span data-l="en">Who decided what</span><span data-l="de">Wer was entschieden hat</span></h4><div class="body"><div class="who"><div><span class="tag"><span data-l="en">Client</span><span data-l="de">Kunde</span></span><ul><li><span data-l="en">Which forms and content</span><span data-l="de">Welche Formulare und Inhalte</span></li><li><span data-l="en">Intentional changes, e.g. removing a P.O. box</span><span data-l="de">Bewusste Änderungen, z. B. Postfach entfernt</span></li></ul></div><div class="me"><span class="tag"><span data-l="en">Me, with the team</span><span data-l="de">Ich, mit dem Team</span></span><ul><li><span data-l="en">Building forms and partner profiles in Pimcore</span><span data-l="de">Formulare und Partnerprofile in Pimcore aufbauen</span></li><li><span data-l="en">Fixes prioritised with the developers</span><span data-l="de">Korrekturen mit den Entwicklern priorisiert</span></li></ul></div><div class="me"><span class="tag"><span data-l="en">My call</span><span data-l="de">Mein Entscheid</span></span><ul><li><span data-l="en">The QA method and the Old → New format</span><span data-l="de">Die QA-Methode und das Alt → Neu-Format</span></li><li><span data-l="en">No go-ahead until deferred bugs are knowingly accepted</span><span data-l="de">Kein Go, bis verschobene Fehler bewusst akzeptiert sind</span></li><li><span data-l="en">Re-check every fix after each release</span><span data-l="de">Jede Korrektur nach jedem Release erneut prüfen</span></li></ul></div></div></div></div><div class="slide" role="group" aria-roledescription="slide" aria-label="5 / 5"><span class="sn">05 / team</span><h4><span data-l="en">So the team can do it without me</span><span data-l="de">Damit das Team es ohne mich kann</span></h4><div class="body"><ul class="l"><li><span data-l="en">Recurring errors traced back to shared modules</span><span data-l="de">Wiederkehrende Fehler auf gemeinsame Module zurückgeführt</span></li><li><span data-l="en">Trained the team to create forms</span><span data-l="de">Team in der Formularerstellung geschult</span></li><li><span data-l="en">Ongoing guidance and support</span><span data-l="de">Laufende Begleitung und Support</span></li></ul></div></div></div><div class="dnav"><button type="button" class="prev" aria-label="Previous">←</button><div class="dots"></div><span class="ct"></span><button type="button" class="next" aria-label="Next">→</button></div></div></details>
   </article>
+</section>
+
 
 <!-- ===== TEAM & WAY OF WORKING ===== -->
+<section class="view" id="v-how" data-view="how" tabindex="-1">
 <section class="sec" id="how">
   <h2 data-l="en">One team, two countries</h2>
   <h2 data-l="de">Ein Team, zwei Länder</h2>
@@ -801,7 +953,10 @@ details.deckwrap summary small{color:var(--muted)}
     <div><span class="ic"><svg width="22" height="22"><use href="#i-send"/></svg></span><b data-l="en">Hand over</b><b data-l="de">Übergeben</b><span data-l="en">go live, train users</span><span data-l="de">Go-live, Schulung</span></div>
   </div>
 </section>
+</section>
 
+
+<section class="view two" id="v-about" data-view="about" tabindex="-1">
 <section class="sec" id="skills">
   <h2 data-l="en">Skills → where I used them</h2>
   <h2 data-l="de">Kenntnisse → wo ich sie eingesetzt habe</h2>
@@ -828,7 +983,10 @@ details.deckwrap summary small{color:var(--muted)}
     <div><span class="y">2019</span><span><b data-l="en">Bachelor of Informatics</b><b data-l="de">Bachelor in Informatik</b><span class="s">Namibia University of Science and Technology</span></span></div>
   </div>
 </section>
+</section>
 
+
+<section class="view" id="v-cv" data-view="cv" tabindex="-1">
 <section class="sec" id="cv">
   <h2 data-l="en">Download my CV</h2><h2 data-l="de">Lebenslauf herunterladen</h2>
   <div class="dl">
@@ -855,7 +1013,10 @@ details.deckwrap summary small{color:var(--muted)}
 </section>
 
 <footer>© 2026 Hafeni Nghidinwa · <span data-l="en">Demo data is made up; project figures are real.</span><span data-l="de">Demo-Daten sind erfunden; Projektzahlen sind echt.</span></footer>
+</section>
+
 </main>
+</div>
 
 <script>
 (function(){
@@ -1044,6 +1205,77 @@ details.deckwrap summary small{color:var(--muted)}
   });
   var saved=null; try{saved=localStorage.getItem('lang')}catch(e){}
   setLang(saved==='de'?'de':'en');
+})();
+
+/* ===== app shell router (v14) ===== */
+(function(){
+  var order=['overview','p1','p2','p3','p4','how','about','cv'];
+  var alias={top:'overview',skills:'about',experience:'about',contact:'cv'};
+  var paths={overview:'overview',p1:'projects/01_invoice-automation',p2:'projects/02_statistics-migration',p3:'projects/03_prefex',p4:'projects/04_pension-forms',how:'how-i-work',about:'skills',cv:'cv'};
+  var main=document.querySelector('.main'), cur=null;
+  var de=function(){return document.documentElement.getAttribute('data-lang')==='de'};
+  /* overview: hero text and terminal side by side */
+  var ov=document.getElementById('v-overview');
+  if(ov){var hero=ov.querySelector('.hero'),term=ov.querySelector('.term');
+    if(hero&&term){var t=document.createElement('div');t.className='ovtop';hero.parentNode.insertBefore(t,hero);t.appendChild(hero);t.appendChild(term)}}
+  /* project tabs */
+  document.querySelectorAll('.view .proj').forEach(function(pr){
+    var tabs=[['sum','Summary','Überblick']];
+    var dk=pr.querySelector('details.deckwrap'), tr=pr.querySelectorAll('details.try');
+    if(dk){dk.open=true;var n=dk.querySelectorAll('.slide').length;tabs.push(['deck','Walkthrough','Durchgang',n+' slides',n+' Folien'])}
+    if(tr.length){tr.forEach(function(d){d.open=true;d.querySelector('summary').addEventListener('click',function(e){if(pr.getAttribute('data-tab')==='try')e.preventDefault()})});tabs.push(['try','Try it','Ausprobieren'])}
+    var pb=document.createElement('div');pb.className='pbody';
+    var parts=[].slice.call(pr.querySelectorAll(':scope > .pgrid, :scope > details'));
+    if(parts.length){parts[0].parentNode.insertBefore(pb,parts[0]);parts.forEach(function(x){pb.appendChild(x)})}
+    var vw=pr.closest('.view'); if(vw)vw.classList.add('pv');
+    var bar=document.createElement('div');bar.className='ptabs';bar.setAttribute('role','tablist');
+    tabs.forEach(function(t){var b=document.createElement('button');b.type='button';b.setAttribute('role','tab');b.setAttribute('data-t',t[0]);
+      b.innerHTML='<span data-l="en">'+t[1]+'</span><span data-l="de">'+t[2]+'</span>'+(t[3]?'<span class="mono"><span data-l="en">'+t[3]+'</span><span data-l="de">'+t[4]+'</span></span>':'');
+      b.onclick=function(){setTab(pr,t[0])};bar.appendChild(b)});
+    var hs=pr.querySelectorAll(':scope > h2'), last=hs[hs.length-1];
+    last.parentNode.insertBefore(bar,last.nextSibling);
+    setTab(pr,'sum');
+  });
+  function setTab(pr,t){pr.setAttribute('data-tab',t);pr.querySelectorAll('.ptabs button').forEach(function(b){b.setAttribute('aria-selected',b.getAttribute('data-t')===t)});
+    var pbx=pr.querySelector('.pbody');if(pbx)pbx.scrollTop=0}
+  /* prev / next project links */
+  ['p1','p2','p3','p4'].forEach(function(p,i){
+    var v=document.getElementById('v-'+p); if(!v)return;
+    var nx=document.createElement('div');nx.className='pnext';
+    var prev=i?'p'+i:'overview', next=i<3?'p'+(i+2):'how';
+    var lbl=function(k){var a=document.querySelector('.vnav a[data-v="'+k+'"] .t');return a?a.innerHTML:k};
+    nx.innerHTML='<a href="#'+prev+'">← '+lbl(prev)+'</a><a href="#'+next+'">'+lbl(next)+' →</a>';
+    v.appendChild(nx);
+  });
+  function resolve(hh){hh=(hh||'').replace(/^#/,'');hh=alias[hh]||hh;return order.indexOf(hh)>=0?hh:'overview'}
+  function show(k,push,focus){
+    k=resolve(k); if(k===cur)return; cur=k;
+    document.querySelectorAll('.view').forEach(function(v){v.classList.toggle('on',v.getAttribute('data-view')===k)});
+    document.querySelectorAll('.vnav a').forEach(function(a){if(a.getAttribute('data-v')===k)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+    var i=order.indexOf(k);
+    var cp=document.getElementById('crumb-path'); if(cp)cp.textContent=paths[k];
+    var cn=document.getElementById('crumb-n'); if(cn)cn.textContent=(i+1)+' / '+order.length;
+    var bp=document.getElementById('v-prev'),bn=document.getElementById('v-next');
+    if(bp)bp.disabled=i===0; if(bn)bn.disabled=i===order.length-1;
+    if(main)main.scrollTop=0; window.scrollTo(0,0);
+    var act=document.querySelector('.vnav a[aria-current]'); if(act&&act.scrollIntoView&&window.innerWidth<900){try{act.scrollIntoView({block:'nearest',inline:'center'})}catch(e){}}
+    if(push){try{history.pushState(null,'','#'+k)}catch(e){}}
+    if(focus){var v=document.getElementById('v-'+k);try{v.focus({preventScroll:true})}catch(e){}}
+  }
+  window.showView=show;
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href^="#"]'); if(!a)return;
+    var hh=a.getAttribute('href').slice(1); if(!hh)return;
+    var k=alias[hh]||hh;
+    if(order.indexOf(k)<0)return;
+    e.preventDefault(); show(k,true,true);
+  });
+  window.addEventListener('popstate',function(){show(location.hash,false,false)});
+  window.addEventListener('hashchange',function(){show(location.hash,false,false)});
+  var bp=document.getElementById('v-prev'),bn=document.getElementById('v-next');
+  if(bp)bp.onclick=function(){var i=order.indexOf(cur);if(i>0)show(order[i-1],true,true)};
+  if(bn)bn.onclick=function(){var i=order.indexOf(cur);if(i<order.length-1)show(order[i+1],true,true)};
+  show(location.hash,false,false);
 })();
 </script>
 </body>
