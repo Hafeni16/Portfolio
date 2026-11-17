@@ -821,6 +821,13 @@ details.deckwrap summary small{color:var(--muted)}
 .beat:nth-child(1){border-top-color:#E0A01E}.beat:nth-child(1) h3{color:#B7791F}
 .beat:nth-child(2){border-top-color:#64748B}.beat:nth-child(2) h3{color:#475569}
 .dl>div:nth-of-type(2){border-top-color:var(--c1)!important}.dl>div:nth-of-type(3){border-top-color:var(--c2)!important}.dl>div:nth-of-type(4){border-top-color:var(--c3)!important}.dl>div:nth-of-type(5){border-top-color:var(--c4)!important}
+
+/* buttons: blue instead of green (2026-11-17d) */
+:root{--btn:#3355D8;--btn-h:#2643B8}
+.btn.primary,.side .btn.primary,.view.ov .hero .btn.primary{background:var(--btn)!important;border-color:var(--btn)!important;color:#fff!important}
+.btn.primary:hover{background:var(--btn-h)!important;border-color:var(--btn-h)!important}
+.side .lang button[aria-pressed="true"]{background:var(--btn);color:#fff}
+.view.ov .hero .btn:not(.primary){color:var(--btn);border-color:var(--btn)}
 </style>
 </head>
 <body class="appmode">
