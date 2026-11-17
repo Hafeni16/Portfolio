@@ -712,6 +712,72 @@ body{background-image:none}
 .contact h2,.contact a{color:#fff!important}
 .contact p{color:#C9D4E3}
 .contact .lines a{border-bottom-color:#3CCFC4}
+
+/* ===== Lighter palette (2026-11-17b) ===== */
+:root{--teal:#0B8A84;--teal-l:#3CCFC4;--soft:#E6F5F3;--warm:#FDF3E3;--coral:#E07A3F}
+/* sidebar: light */
+.side{background:#fff;border-right:1px solid var(--line);color:var(--ink)}
+.me-card .nm{color:var(--ink)}
+.me-card .rl{color:var(--muted)}
+.me-card .av{color:var(--teal)}.me-card .av i{background:var(--teal)}
+.me-card img{border:2px solid var(--soft)}
+.vnav a{color:var(--muted)}
+.vnav a b{color:#9AA5B4}
+.vnav a:hover{background:var(--paper);color:var(--ink)}
+.vnav a[aria-current="page"]{background:var(--soft);color:var(--ink);box-shadow:inset 3px 0 0 var(--teal)}
+.vnav a[aria-current="page"] b{color:var(--teal)}
+.side-foot .sl{color:var(--muted)}.side-foot .sl:hover{color:var(--teal)}
+.side .lang{background:#fff;border-color:var(--line)}
+.side .lang button{color:var(--muted)}
+.side .lang button[aria-pressed="true"]{background:var(--teal);color:#fff}
+.side .btn.primary{background:var(--teal);color:#fff;border-color:var(--teal)}
+/* overview hero: soft gradient */
+.view.ov .hero{background:linear-gradient(120deg,#DDF3F0 0%,#F3FAF9 55%,var(--warm) 100%);color:var(--ink);border:1px solid #D3ECE8}
+.view.ov .hero h1{color:var(--ink)}
+.view.ov .hero h1 em{color:var(--teal)}
+.view.ov .hero .hello{color:var(--teal)}
+.view.ov .hero .sub{color:#3E4B5E}
+.view.ov .hero .btn.primary{background:var(--teal);color:#fff;border-color:var(--teal)}
+.view.ov .hero .btn:not(.primary){color:var(--teal);border-color:var(--teal);background:#fff}
+.stat:nth-child(2){border-top-color:var(--coral)}.stat:nth-child(2) .n{color:var(--coral)}
+.stat:nth-child(4){border-top-color:var(--coral)}.stat:nth-child(4) .n{color:var(--coral)}
+/* project cards */
+.beat:nth-child(2){border-top-color:#5B8DEF}.beat:nth-child(2) h3{color:#3D6FD6}
+.beat:nth-child(1){border-top-color:var(--coral)}.beat:nth-child(1) h3{color:var(--coral)}
+.pipe{background:var(--soft);color:var(--ink)}
+.pipe::before{background:var(--teal);opacity:.35}
+.pipe .ic{background:#fff!important;border-color:var(--teal)!important;color:var(--teal)!important}
+.pipe .st span{color:var(--ink)}
+/* downloads + contact */
+.dl div{border-top-color:#5B8DEF}
+.dl div.pf{border-top-color:var(--teal)}
+.dl a:hover{background:var(--teal)!important;border-color:var(--teal)}
+.contact{background:linear-gradient(135deg,#DDF3F0,var(--warm))!important;color:var(--ink)!important;border:1px solid #D3ECE8}
+.contact h2,.contact a{color:var(--ink)!important}
+.contact p{color:#3E4B5E}
+.contact .lines a{border-bottom-color:var(--teal)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--soft:#13282B;--warm:#2A2418}}
+
+/* light walkthrough slides + teal selected states */
+details.deckwrap{background:#fff;color:var(--ink);border:1px solid var(--line)}
+details.deckwrap summary small{color:var(--muted)}
+.slides{background:linear-gradient(135deg,#F3FAF9,#FFFFFF 60%,#FFFBF4);border-color:var(--line)}
+.slide h4{color:var(--ink)}
+.slide p{color:#4A5668}
+.slide ul.l{color:#3E4B5E}
+.slide .tag{color:var(--muted)}
+.dnav button{background:#fff;border-color:var(--line);color:var(--ink)}
+.dots button{background:var(--line)}
+.dnav .ct{color:var(--muted)}
+.kpis div,.ladder div,.inherit span,.arch .n{background:#fff;border-color:var(--line);color:var(--ink)}
+.kpis b{color:var(--teal)}
+.kpis span,.arch .n small{color:var(--muted)}
+.inherit span.hl{color:var(--ink);background:var(--soft)}
+.arch .n.hl{background:var(--soft)}
+.code{background:#F6F8FA;border-color:var(--line);color:#3E4B5E}
+.code .k{color:#6B7A90}.code .s{color:var(--ink)}.code .n{color:var(--teal)}.code .c{color:#9AA5B4}
+.cellbox{background:var(--soft);color:var(--ink)}
+.ptabs button[aria-selected="true"],.skillmap button[aria-pressed="true"],.btn.primary{background:var(--teal);border-color:var(--teal);color:#fff}
 </style>
 </head>
 <body class="appmode">
