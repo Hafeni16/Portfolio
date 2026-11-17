@@ -877,6 +877,39 @@ h1,h2,h3{letter-spacing:-0.01em}
 .crumb b{font-weight:600}
 .ptop .pill{text-transform:none;letter-spacing:0;font:400 13.5px var(--font-body)}
 .ptop .pill b{font-weight:700}
+
+/* ===== Data/IT dashboard look on white, soft colours (2026-11-17f) ===== */
+:root,:root[data-theme="light"]{
+ --paper:#F6F8FA;--surface:#FFFFFF;--ink:#1F2A3A;--muted:#6B7685;--line:#E3E8EE;
+ --c1:#4E9A93;--c2:#5B7DB8;--c3:#C08457;--c4:#8579B8;
+ --t1:#EDF6F5;--t2:#EEF2F9;--t3:#F9F1EA;--t4:#F1EFF8;
+ --acc:#5B7DB8;--teal:#4E9A93;--indigo:#5B7DB8;--soft:#EEF2F9;--warm:#F9F1EA;
+ --btn:#E8EEF8;--btn-h:#DCE5F4;--btn-ink:#34548A;--grid:rgba(91,125,184,.07)}
+.side{background:#FFFFFF}
+/* chart-grid backdrop on hero + contact, like a plotting area */
+.view.ov .hero,.contact{background-color:#FFFFFF!important;
+ background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px)!important;
+ background-size:28px 28px!important;border:1px solid var(--line)!important}
+.view.ov .hero h1 em{color:var(--c2)}
+.view.ov .hero .hello{font-family:var(--font-mono);color:var(--muted)!important}
+/* monospaced data labels (IT feel), kept quiet */
+.crumb{font:500 11.5px var(--font-mono);text-transform:uppercase;letter-spacing:.07em}
+.ptop .pill{font:500 11.5px var(--font-mono);text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.ptop .pill b{font-family:var(--font-display);font-size:24px;letter-spacing:0}
+.stat .n,.big,.kpis b,.glance dd{font-variant-numeric:tabular-nums}
+/* KPI tiles: dashboard style with a mini bar */
+.stat{border-top-width:1px!important;border-top-color:var(--line)!important;position:relative;padding-top:30px!important;overflow:hidden}
+.stat::before{content:"KPI";position:absolute;top:12px;left:var(--s3);font:500 10.5px var(--font-mono);letter-spacing:.08em;color:var(--muted)}
+.stat::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;opacity:.55}
+.stat.s1::after{background:var(--c1)}.stat.s2::after{background:var(--c2)}.stat.s3::after{background:var(--c3)}.stat.s4::after{background:var(--c4)}
+/* story cards: left accent instead of top bar, like data panels */
+.beat{border-top-width:1px!important;border-top-color:var(--line)!important;border-left:3px solid var(--line)}
+.beat:nth-child(1){border-left-color:#D9B97E}.beat:nth-child(1) h3{color:#9C7A3C!important}
+.beat:nth-child(2){border-left-color:#AEB8C6}.beat:nth-child(2) h3{color:#5E6878!important}
+.beat:nth-child(3){border-left-color:var(--c)}.beat:nth-child(3) h3{color:var(--c)!important}
+.dl>div{border-top-width:1px!important;border-top-color:var(--line)!important;border-left:3px solid var(--line)}
+.dl>div:nth-of-type(2){border-left-color:var(--c1)}.dl>div:nth-of-type(3){border-left-color:var(--c2)}.dl>div:nth-of-type(4){border-left-color:var(--c3)}.dl>div:nth-of-type(5){border-left-color:var(--c4)}
+.dl div.pf{border-left-color:var(--c2)}
 </style>
 </head>
 <body class="appmode">
