@@ -628,6 +628,90 @@ body.appmode{overflow:hidden}
 }
 @media (max-width:899px){.view .proj{padding:var(--s4) var(--s3)}.view .proj h2{font-size:clamp(26px,7vw,34px)}}
 @media print{.side,.crumb,.ptabs,.pnext{display:none!important}.app{display:block;height:auto}.view{display:block!important}body.appmode{overflow:visible}}
+
+/* ===== Design B "case-study deck" restyle (2026-11-17) ===== */
+:root{--navy:#13233A;--navy2:#1C3050;--warn-t:#FBF1DF;--r:14px}
+body{background-image:none}
+.tools span::before,.pill b::before,.beat h3::before{content:none}
+/* sidebar: navy panel like the deck cover */
+.side{background:var(--navy);border-right:0;color:#E8EDF3}
+.me-card .nm{color:#fff}
+.me-card .rl{color:#9FB0C6}
+.me-card .av{color:#3CCFC4}
+.me-card .av i{background:#3CCFC4}
+.me-card img{border:2px solid rgba(255,255,255,.18)}
+.vnav a{color:#B7C4D6}
+.vnav a b{color:#6F84A0}
+.vnav a:hover{background:rgba(255,255,255,.06);color:#fff}
+.vnav a[aria-current="page"]{background:rgba(60,207,196,.14);color:#fff;box-shadow:inset 3px 0 0 #3CCFC4}
+.vnav a[aria-current="page"] b{color:#3CCFC4}
+.side-foot .sl{color:#B7C4D6}
+.side-foot .sl:hover{color:#3CCFC4}
+.side .lang{background:transparent;border-color:rgba(255,255,255,.2)}
+.side .lang button{color:#B7C4D6}
+.side .lang button[aria-pressed="true"]{background:#3CCFC4;color:var(--navy)}
+.side .btn.primary{background:#3CCFC4;color:var(--navy);border-color:#3CCFC4}
+/* header strip like the deck's running head */
+.crumb{font:500 11.5px var(--font-mono);text-transform:uppercase;letter-spacing:.08em}
+.crumb .path{display:flex;gap:18px;align-items:center}
+.crumb b{color:var(--ink);font-weight:600}
+.crumb .who-tag{color:var(--muted)}
+/* overview: navy cover panel */
+.view.ov .hero{background:var(--navy);color:#fff;border-radius:var(--r);padding:clamp(28px,4vw,52px);margin-top:var(--s2)}
+.view.ov .hero h1{color:#fff}
+.view.ov .hero h1 em{color:#3CCFC4}
+.view.ov .hero .hello{color:#9FB0C6}
+.view.ov .hero .sub{color:#C9D4E3}
+.view.ov .hero .btn.primary{background:#3CCFC4;color:var(--navy);border-color:#3CCFC4}
+.view.ov .hero .btn:not(.primary){color:#fff;border-color:rgba(255,255,255,.35);background:transparent}
+.glance{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px 26px;margin:var(--s3) 0 0}
+.glance h3{font-size:20px;font-weight:800;margin:0 0 12px}
+.glance dl{display:grid;grid-template-columns:130px 1fr;margin:0;font-size:14.5px}
+.glance dt{font:500 11px var(--font-mono);text-transform:uppercase;letter-spacing:.07em;color:var(--muted);padding:8px 0;border-top:1px solid var(--line)}
+.glance dd{margin:0;padding:6px 0;border-top:1px solid var(--line)}
+.glance dd.ok{color:var(--acc);font-weight:600}
+.stat{background:var(--surface)!important;border:1px solid var(--line);border-top:3px solid var(--acc);border-radius:var(--r)}
+.stat .n{color:var(--acc)}
+/* project pages: white cards on light paper, coloured top rules */
+.proj{background:transparent!important;padding:0!important;border-radius:0}
+.ptop .pill{background:transparent;padding:0;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.ptop .pill b{color:var(--acc);font-family:var(--font-display);font-size:26px;letter-spacing:0;margin-right:4px}
+.ptop .pill.users{border:1px solid var(--line);background:var(--surface);padding:5px 12px;border-radius:999px}
+.proj h2 span.hl{color:var(--acc)}
+.story{gap:12px!important;padding:0!important}
+.beat{display:block;background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--navy);border-radius:var(--r);padding:16px 20px}
+.beat .ic{display:none}
+.beat:nth-child(1){border-top-color:var(--warn)}
+.beat:nth-child(1) h3{color:var(--warn)}
+.beat:nth-child(2) h3{color:var(--ink)}
+.beat:nth-child(3){border-top-color:var(--acc)}
+.beat:nth-child(3) h3{color:var(--acc)}
+.beat h3{font-size:11px;margin:0 0 6px}
+.beat p{font-family:var(--font-display);font-weight:700;font-size:17px;line-height:1.35}
+.card{border:1px solid var(--line);border-radius:var(--r);box-shadow:none}
+.chrome i,.chrome>span{display:none}
+.chrome{font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+.chrome em{margin-left:0;background:var(--tint);padding:3px 10px;border-radius:999px}
+.tools span{background:transparent;border:1px solid var(--line);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.pipe{background:var(--navy);border-radius:var(--r);padding:18px 12px;color:#fff;margin-top:16px}
+.pipe::before{background:#3CCFC4;opacity:.5}
+.pipe .ic{background:var(--navy2)!important;border-color:#3CCFC4!important;color:#3CCFC4!important}
+.pipe .st span{color:#E8EDF3}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--navy:#0B1220;--navy2:#16233A}}
+:root[data-theme="dark"]{--navy:#0B1220;--navy2:#16233A}
+@media (min-width:1100px){.glance dl{grid-template-columns:110px 1fr 110px 1fr;column-gap:24px}}
+.view.ov .hero{padding:clamp(24px,3.2vw,44px)}
+.view.ov .hero h1{font-size:clamp(34px,4vw,56px)}
+.view.ov .glance{margin-top:var(--s2)}
+.view.ov .stats{margin-top:var(--s2)!important}
+.dl div{background:var(--surface)!important;border:1px solid var(--line);border-top:3px solid var(--navy);border-radius:var(--r)!important}
+.dl div.pf{border-top-color:var(--acc)}
+.dl a{border:1px solid var(--line);background:transparent!important}
+.dl a:hover{background:var(--navy)!important;color:#fff;border-color:var(--navy)}
+.contact{background:var(--navy)!important;color:#fff!important;border-radius:var(--r)!important}
+.contact h2,.contact a{color:#fff!important}
+.contact p{color:#C9D4E3}
+.contact .lines a{border-bottom-color:#3CCFC4}
 </style>
 </head>
 <body class="appmode">
@@ -685,7 +769,7 @@ body.appmode{overflow:hidden}
 </aside>
 <main class="main" id="top">
 <div class="crumb" aria-hidden="false">
-  <span class="path mono">~/hafeni/<b id="crumb-path">overview</b></span>
+  <span class="path mono"><b id="crumb-path"><span data-l="en">Overview</span><span data-l="de">Überblick</span></b><span class="who-tag">Hafeni Nghidinwa · Portfolio</span></span>
   <span class="step"><span class="mono" id="crumb-n">1 / 8</span>
   <button type="button" id="v-prev" aria-label="Previous section">←</button><button type="button" id="v-next" aria-label="Next section">→</button></span>
 </div>
@@ -708,17 +792,17 @@ body.appmode{overflow:hidden}
   </div>
 </div>
 
-<div class="term" aria-label="Profile summary">
-  <div class="tb"><i></i><i></i><i></i><span>~/hafeni — zsh</span></div>
-<pre><span class="p">$</span> whoami --short
-<span class="k">role</span>       <span class="s">IT Project Manager · Data · Applications</span>
-<span class="k">based_in</span>   <span class="s">Switzerland</span>   <span class="k">permit</span> <span class="s">B</span>   <span class="k">status</span> <span class="p">available</span>
-<span class="k">stack</span>      Pimcore · Zoho One · SQL · REST APIs · Spring Boot · Doxis AI.dp
-<span class="k">teams</span>      ~30 India · 8 Switzerland
-<span class="k">languages</span>  en (native) · af (native) · de (B1)
-<span class="p">$</span> ls ./projects
-<span class="s">01_invoice-automation/  02_statistics-migration/  03_prefex/  04_pension-forms/</span>
-<span class="p">$</span> <span class="cursor"></span></pre>
+<div class="glance" aria-label="Profile summary">
+  <h3><span data-l="en">At a glance</span><span data-l="de">Auf einen Blick</span></h3>
+  <dl>
+    <dt><span data-l="en">Role</span><span data-l="de">Rolle</span></dt><dd><span data-l="en">IT Project Manager · Data · Applications</span><span data-l="de">IT-Projektleiter · Daten · Applikationen</span></dd>
+    <dt><span data-l="en">Based in</span><span data-l="de">Wohnort</span></dt><dd><span data-l="en">Switzerland</span><span data-l="de">Schweiz</span></dd>
+    <dt><span data-l="en">Permit</span><span data-l="de">Bewilligung</span></dt><dd>B</dd>
+    <dt><span data-l="en">Status</span><span data-l="de">Status</span></dt><dd class="ok"><span data-l="en">Available</span><span data-l="de">Verfügbar</span></dd>
+    <dt>Stack</dt><dd>Pimcore · Zoho One · SQL · REST APIs · Spring Boot · Doxis AI.dp</dd>
+    <dt>Teams</dt><dd><span data-l="en">~30 India · 8 Switzerland</span><span data-l="de">~30 Indien · 8 Schweiz</span></dd>
+    <dt><span data-l="en">Languages</span><span data-l="de">Sprachen</span></dt><dd><span data-l="en">English (native) · Afrikaans (native) · German (B1)</span><span data-l="de">Englisch (Muttersprache) · Afrikaans (Muttersprache) · Deutsch (B1)</span></dd>
+  </dl>
 </div>
 <div class="stats">
   <a class="stat s1" href="#p1"><div class="n">2×</div><div class="l"><span data-l="en">invoices per day, same team</span><span data-l="de">Rechnungen pro Tag, gleiches Team</span></div></a>
@@ -990,7 +1074,7 @@ body.appmode{overflow:hidden}
 <section class="sec" id="cv">
   <h2 data-l="en">Download my CV</h2><h2 data-l="de">Lebenslauf herunterladen</h2>
   <div class="dl">
-    <div class="pf"><b data-l="en">This portfolio as PDF</b><b data-l="de">Dieses Portfolio als PDF</b><span class="note" style="margin:0 0 10px;display:block" data-l="en">6 pages, to attach to an application</span><span class="note" style="margin:0 0 10px;display:block" data-l="de">6 Seiten, als Anhang zur Bewerbung</span><a download href="cv/Portfolio-Hafeni-Nghidinwa-EN.pdf">EN</a><a download href="cv/Portfolio-Hafeni-Nghidinwa-DE.pdf">DE</a></div>
+    <div class="pf"><b data-l="en">This portfolio as PDF</b><b data-l="de">Dieses Portfolio als PDF</b><span class="note" style="margin:0 0 10px;display:block" data-l="en">12 landscape pages, to attach to an application</span><span class="note" style="margin:0 0 10px;display:block" data-l="de">6 Seiten, als Anhang zur Bewerbung</span><a download href="cv/Portfolio-Hafeni-Nghidinwa-EN.pdf">EN</a><a download href="cv/Portfolio-Hafeni-Nghidinwa-DE.pdf">DE</a></div>
     <div><b data-l="en">IT Project Manager</b><b data-l="de">IT-Projektleiter</b><a download href="cv/CV-Hafeni-Nghidinwa-IT-Project-Manager-EN.pdf">EN</a><a download href="cv/Lebenslauf-Hafeni-Nghidinwa-IT-Projektleiter-DE.pdf">DE</a></div>
     <div><b>Data Analyst</b><a download href="cv/CV-Hafeni-Nghidinwa-Data-Analyst-EN.pdf">EN</a><a download href="cv/Lebenslauf-Hafeni-Nghidinwa-Data-Analyst-DE.pdf">DE</a></div>
     <div><b data-l="en">Application Support</b><b data-l="de">Applikationsbetreuung</b><a download href="cv/CV-Hafeni-Nghidinwa-Application-Support-EN.pdf">EN</a><a download href="cv/Lebenslauf-Hafeni-Nghidinwa-Applikationsbetreuung-DE.pdf">DE</a></div>
@@ -1253,7 +1337,7 @@ body.appmode{overflow:hidden}
     document.querySelectorAll('.view').forEach(function(v){v.classList.toggle('on',v.getAttribute('data-view')===k)});
     document.querySelectorAll('.vnav a').forEach(function(a){if(a.getAttribute('data-v')===k)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
     var i=order.indexOf(k);
-    var cp=document.getElementById('crumb-path'); if(cp)cp.textContent=paths[k];
+    var cp=document.getElementById('crumb-path'); if(cp){var na=document.querySelector('.vnav a[data-v="'+k+'"]');var nb=na&&na.querySelector('b'),nt=na&&na.querySelector('.t');cp.innerHTML=(nb&&nb.textContent!=='~'?nb.textContent+' · ':'')+(nt?nt.innerHTML:k);}
     var cn=document.getElementById('crumb-n'); if(cn)cn.textContent=(i+1)+' / '+order.length;
     var bp=document.getElementById('v-prev'),bn=document.getElementById('v-next');
     if(bp)bp.disabled=i===0; if(bn)bn.disabled=i===order.length-1;
