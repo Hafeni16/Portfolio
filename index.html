@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hafeni Nghidinwa Portfolio</title>
 <meta name="description" content="IT Project Manager in Switzerland – data platforms, migrations, rulesets and business applications.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="canonical" href="https://hafeni16.github.io/Portfolio/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23E2001A'/%3E%3Ctext x='8' y='46' font-family='Arial,Helvetica,sans-serif' font-weight='900' font-size='34' fill='%23fff' letter-spacing='-2'%3EHN%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hafeni16.github.io/Portfolio/">
+<meta property="og:title" content="Hafeni Nghidinwa · IT Project Manager in Switzerland">
+<meta property="og:description" content="I turn messy data into systems that run on their own. Data platforms, migrations and automation, delivered with teams in Switzerland and India.">
+<meta property="og:image" content="https://hafeni16.github.io/Portfolio/og.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Hafeni Nghidinwa","jobTitle":"IT Project Manager","url":"https://hafeni16.github.io/Portfolio/","image":"https://hafeni16.github.io/Portfolio/photo.jpg","email":"mailto:hafenihafa@gmail.com","sameAs":["https://www.linkedin.com/in/hafeni-nghidinwa-6b2158229"],"address":{"@type":"PostalAddress","addressCountry":"CH"},"knowsLanguage":["en","af","de"],"knowsAbout":["IT project management","Data migration","Rulesets","Pimcore","Zoho","SQL","REST APIs","Document automation"]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&family=Schibsted+Grotesk:wght@500;700;800;900&family=Instrument+Sans:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
@@ -773,6 +784,43 @@ details.deckwrap summary small{color:var(--muted)}
 .used div.on,.used div[aria-current],.used div.hit{background:var(--ink)!important;color:#fff!important;border-color:var(--ink)}
 .facts div{border-radius:0!important;background:#fff!important;border:0!important;border-top:2px solid var(--rule)!important;padding:12px 0 0!important}
 .facts h3{color:var(--red)!important;font:700 10.5px var(--font-body)!important;text-transform:uppercase;letter-spacing:.08em}
+
+/* ===== Stand-out pass (2026-11-17) ===== */
+/* portrait back in the overview, Swiss style */
+.view.ov .hero{grid-template-columns:minmax(0,1fr) 230px!important;align-items:end;gap:var(--s5)}
+.view.ov .hero .photo{display:block!important;position:relative;align-self:end}
+.view.ov .hero .photo img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:0;border:0;box-shadow:none;filter:grayscale(1) contrast(1.05)}
+.view.ov .hero .photo .avail{position:absolute;left:0;bottom:0;background:var(--red);color:#fff;border-radius:0;padding:7px 10px;font:700 10.5px var(--font-body);text-transform:uppercase;letter-spacing:.08em;display:flex;gap:7px;align-items:center;box-shadow:none;transform:none}
+.view.ov .hero .photo .avail i{width:7px;height:7px;border-radius:50%;background:#fff;display:inline-block}
+@media (max-width:900px){.view.ov .hero{grid-template-columns:1fr!important}.view.ov .hero .photo{max-width:220px}}
+/* live dot */
+@media (prefers-reduced-motion:no-preference){
+ .me-card .av i,.view.ov .hero .photo .avail i{animation:pulse 2.2s ease-in-out infinite}
+ @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(226,0,26,.45)}50%{box-shadow:0 0 0 5px rgba(226,0,26,0)}}
+ .view.ov .hero .photo .avail i{animation-name:pulsew}
+ @keyframes pulsew{0%,100%{box-shadow:0 0 0 0 rgba(255,255,255,.7)}50%{box-shadow:0 0 0 5px rgba(255,255,255,0)}}
+}
+/* progress rule in the running head */
+.crumb{position:sticky}
+.crumb .prog{position:absolute;left:0;right:0;bottom:-2px;height:2px;pointer-events:none}
+.crumb .prog i{display:block;height:2px;width:12.5%;background:var(--red);transition:width .35s ease}
+/* project index table (like the PDF contents) */
+.pidx{margin-top:var(--s5);border-top:2px solid var(--rule)}
+.pidx h3{font:700 10.5px var(--font-body);text-transform:uppercase;letter-spacing:.08em;color:var(--red);margin:12px 0 4px}
+.prow{display:grid;grid-template-columns:64px minmax(0,1.3fr) minmax(0,1fr) 28px;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink)}
+.prow b{font:800 28px/1 var(--font-display);letter-spacing:-.04em;color:var(--ink)}
+.prow .tt{font:700 19px/1.25 var(--font-display);letter-spacing:-.015em}
+.prow .tt .hl{color:inherit}
+.prow .mt{font:600 10.5px var(--font-body);text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+.prow .ar{font-size:20px;text-align:right;transition:transform .2s}
+.prow:hover b,.prow:hover .tt,.prow:hover .ar,.prow:focus-visible b{color:var(--red)}
+.prow:hover .ar{transform:translateX(4px)}
+@media (max-width:760px){.prow{grid-template-columns:44px 1fr 20px}.prow .mt{grid-column:2/3}.prow .ar{grid-row:1}}
+/* hover detail on KPIs: red underline grows */
+.stat{position:relative}
+.stat::after{content:"";position:absolute;left:0;top:-2px;height:2px;width:0;background:var(--red);transition:width .35s ease}
+.stat:hover::after{width:100%}
+@media (max-width:900px){.view.ov .hero .photo{order:2;max-width:170px}.view.ov .hero>div:first-child{order:1}}
 </style>
 </head>
 <body class="appmode">
@@ -831,7 +879,7 @@ details.deckwrap summary small{color:var(--muted)}
 <main class="main" id="top">
 <div class="crumb" aria-hidden="false">
   <span class="path mono"><b id="crumb-path"><span data-l="en">Overview</span><span data-l="de">Überblick</span></b><span class="who-tag">Hafeni Nghidinwa · Portfolio</span></span>
-  <span class="step"><span class="mono" id="crumb-n">1 / 8</span>
+  <span class="prog" aria-hidden="true"><i id="crumb-prog"></i></span><span class="step"><span class="mono" id="crumb-n">1 / 8</span>
   <button type="button" id="v-prev" aria-label="Previous section">←</button><button type="button" id="v-next" aria-label="Next section">→</button></span>
 </div>
 <section class="view ov" id="v-overview" data-view="overview" tabindex="-1">
@@ -872,6 +920,7 @@ details.deckwrap summary small{color:var(--muted)}
   <a class="stat s4" href="#p4"><div class="n">4</div><div class="l"><span data-l="en">languages per pension form, all checked</span><span data-l="de">Sprachen pro Vorsorge-Formular, alle geprüft</span></div></a>
 </div>
 
+<div class="pidx" id="pidx"><h3><span data-l="en">Four projects</span><span data-l="de">Vier Projekte</span></h3></div>
 <!-- ===== 01 ===== -->
 </section>
 
@@ -1400,6 +1449,7 @@ details.deckwrap summary small{color:var(--muted)}
     var i=order.indexOf(k);
     var cp=document.getElementById('crumb-path'); if(cp){var na=document.querySelector('.vnav a[data-v="'+k+'"]');var nb=na&&na.querySelector('b'),nt=na&&na.querySelector('.t');cp.innerHTML=(nb&&nb.textContent!=='~'?nb.textContent+' · ':'')+(nt?nt.innerHTML:k);}
     var cn=document.getElementById('crumb-n'); if(cn)cn.textContent=(i+1)+' / '+order.length;
+    var pg=document.getElementById('crumb-prog'); if(pg)pg.style.width=((i+1)/order.length*100)+'%';
     var bp=document.getElementById('v-prev'),bn=document.getElementById('v-next');
     if(bp)bp.disabled=i===0; if(bn)bn.disabled=i===order.length-1;
     if(main)main.scrollTop=0; window.scrollTo(0,0);
@@ -1421,6 +1471,28 @@ details.deckwrap summary small{color:var(--muted)}
   if(bp)bp.onclick=function(){var i=order.indexOf(cur);if(i>0)show(order[i-1],true,true)};
   if(bn)bn.onclick=function(){var i=order.indexOf(cur);if(i<order.length-1)show(order[i+1],true,true)};
   show(location.hash,false,false);
+})();
+
+/* project index + keyboard navigation (2026-11-17) */
+(function(){
+  var box=document.getElementById('pidx'); if(box){
+    ['p1','p2','p3','p4'].forEach(function(k){
+      var art=document.querySelector('#v-'+k+' .proj'); if(!art)return;
+      var pill=art.querySelector('.ptop .pill'); var meta=pill?pill.cloneNode(true):null;
+      var num=pill&&pill.querySelector('b')?pill.querySelector('b').textContent:'';
+      if(meta){var b=meta.querySelector('b'); if(b)b.remove();}
+      var t=''; art.querySelectorAll('h2').forEach(function(h){t+='<span data-l="'+h.getAttribute('data-l')+'">'+h.innerHTML+'</span>'});
+      var a=document.createElement('a'); a.className='prow'; a.href='#'+k;
+      a.innerHTML='<b>'+num+'</b><span class="tt">'+t+'</span><span class="mt">'+(meta?meta.innerHTML:'')+'</span><span class="ar" aria-hidden="true">→</span>';
+      box.appendChild(a);
+    });
+  }
+  document.addEventListener('keydown',function(e){
+    if(e.altKey||e.ctrlKey||e.metaKey)return;
+    var t=e.target; if(t&&(t.closest&&t.closest('input,textarea,select,.slides,.deck,[contenteditable]')))return;
+    if(e.key==='ArrowRight'){var n=document.getElementById('v-next'); if(n&&!n.disabled){n.click();e.preventDefault()}}
+    if(e.key==='ArrowLeft'){var p=document.getElementById('v-prev'); if(p&&!p.disabled){p.click();e.preventDefault()}}
+  });
 })();
 </script>
 </body>
