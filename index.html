@@ -778,6 +778,49 @@ details.deckwrap summary small{color:var(--muted)}
 .code .k{color:#6B7A90}.code .s{color:var(--ink)}.code .n{color:var(--teal)}.code .c{color:#9AA5B4}
 .cellbox{background:var(--soft);color:var(--ink)}
 .ptabs button[aria-selected="true"],.skillmap button[aria-pressed="true"],.btn.primary{background:var(--teal);border-color:var(--teal);color:#fff}
+
+/* ===== Multi-colour: one colour per project (2026-11-17c) ===== */
+:root,:root[data-theme="dark"]{--c1:#0B8A84;--c2:#4361EE;--c3:#E0663A;--c4:#8B5CF6;
+ --t1:#E6F5F3;--t2:#ECEFFE;--t3:#FDEFE8;--t4:#F3EEFE;--indigo:#4361EE;--violet:#8B5CF6}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--c1:#3CCFC4;--c2:#7B93FF;--c3:#FF8A5C;--c4:#B197FC;--t1:#13282B;--t2:#1A2140;--t3:#2E1E17;--t4:#241B3A}}
+/* project colour drives headings, numbers, result card, diagrams */
+.proj h2 span.hl,.ptop .pill b{color:var(--c)}
+.beat:nth-child(3){border-top-color:var(--c)}.beat:nth-child(3) h3{color:var(--c)}
+.chrome em{color:var(--c);background:color-mix(in srgb,var(--c) 12%,#fff)}
+.pipe{background:color-mix(in srgb,var(--c) 10%,#fff)}
+.pipe::before{background:var(--c)}
+.pipe .ic{border-color:var(--c)!important;color:var(--c)!important}
+.kpis b{color:var(--c)}
+.slides{background:linear-gradient(135deg,color-mix(in srgb,var(--c) 8%,#fff),#fff 60%)}
+
+.ptabs button[aria-selected="true"]{background:var(--c);border-color:var(--c)}
+/* nav numbers + active item in each project's colour */
+.vnav a[data-v="p1"] b{color:var(--c1)}.vnav a[data-v="p2"] b{color:var(--c2)}.vnav a[data-v="p3"] b{color:var(--c3)}.vnav a[data-v="p4"] b{color:var(--c4)}
+.vnav a[data-v="p2"][aria-current="page"]{background:var(--t2);box-shadow:inset 3px 0 0 var(--c2)}
+.vnav a[data-v="p3"][aria-current="page"]{background:var(--t3);box-shadow:inset 3px 0 0 var(--c3)}
+.vnav a[data-v="p4"][aria-current="page"]{background:var(--t4);box-shadow:inset 3px 0 0 var(--c4)}
+.vnav a[data-v="how"][aria-current="page"],.vnav a[data-v="about"][aria-current="page"]{background:var(--t2);box-shadow:inset 3px 0 0 var(--indigo)}
+.vnav a[data-v="how"][aria-current="page"] b,.vnav a[data-v="about"][aria-current="page"] b{color:var(--indigo)}
+/* overview: colourful hero and stat cards */
+.view.ov .hero{background:linear-gradient(120deg,#DDF3F0 0%,#ECEFFE 50%,#FDEFE8 100%);border-color:#DCE3F7}
+.view.ov .hero .hello{color:var(--indigo)}
+.view.ov .hero .btn:not(.primary){color:var(--indigo);border-color:var(--indigo)}
+.stat.s1{border-top-color:var(--c1)}.stat.s1 .n{color:var(--c1)}
+.stat.s2{border-top-color:var(--c2)}.stat.s2 .n{color:var(--c2)}
+.stat.s3{border-top-color:var(--c3)}.stat.s3 .n{color:var(--c3)}
+.stat.s4{border-top-color:var(--c4)}.stat.s4 .n{color:var(--c4)}
+.beat:nth-child(2){border-top-color:var(--indigo)}.beat:nth-child(2) h3{color:var(--indigo)}
+.glance dd.ok{color:var(--c1)}
+/* downloads + contact */
+.dl div:nth-child(2){border-top-color:var(--c1)}.dl div:nth-child(3){border-top-color:var(--c2)}.dl div:nth-child(4){border-top-color:var(--c3)}.dl div:nth-child(5){border-top-color:var(--c4)}
+.dl div.pf{border-top-color:var(--indigo)}
+.dl a:hover{background:var(--indigo)!important;border-color:var(--indigo)}
+.contact{background:linear-gradient(135deg,#ECEFFE,#F3EEFE 50%,#FDEFE8)!important;border-color:#DCE3F7}
+.contact .lines a{border-bottom-color:var(--indigo)}
+.skillmap button[aria-pressed="true"]{background:var(--indigo);border-color:var(--indigo)}
+.beat:nth-child(1){border-top-color:#E0A01E}.beat:nth-child(1) h3{color:#B7791F}
+.beat:nth-child(2){border-top-color:#64748B}.beat:nth-child(2) h3{color:#475569}
+.dl>div:nth-of-type(2){border-top-color:var(--c1)!important}.dl>div:nth-of-type(3){border-top-color:var(--c2)!important}.dl>div:nth-of-type(4){border-top-color:var(--c3)!important}.dl>div:nth-of-type(5){border-top-color:var(--c4)!important}
 </style>
 </head>
 <body class="appmode">
